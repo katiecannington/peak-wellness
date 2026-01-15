@@ -368,7 +368,7 @@ const PeakWellness = () => {
       }}>
         <div style={styles.navContainer}>
           <div style={styles.logo} onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }}>
-            <span style={styles.logoIcon}>⛰️</span>
+            <img src="/logo.png" alt="Peak Wellness" style={{ height: '40px' }} />
             <span style={styles.logoText}>{config.businessName}</span>
           </div>
           
@@ -772,7 +772,7 @@ const PeakWellness = () => {
         <div style={styles.footerContainer}>
           <div className="footer-main" style={styles.footerMain}>
             <div style={styles.footerBrand}>
-              <span style={styles.footerLogo}>⛰️ {config.businessName}</span>
+              <span style={styles.footerLogo}><img src="/logo.png" alt="" style={{ height: '30px', marginRight: '10px', verticalAlign: 'middle' }} /> {config.businessName}</span>
               <p style={styles.footerTagline}>{config.tagline}</p>
             </div>
             <div className="footer-links" style={styles.footerLinks}>
