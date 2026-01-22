@@ -368,7 +368,7 @@ const PeakWellness = () => {
       }}>
         <div style={styles.navContainer}>
           <div style={styles.logo} onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }}>
-            <img src="/logo.png" alt="Peak Wellness" style={{ height: '40px' }} />
+            <span style={styles.logoIcon}>⛰️</span>
             <span style={styles.logoText}>{config.businessName}</span>
           </div>
           
@@ -450,12 +450,11 @@ const PeakWellness = () => {
             <div style={styles.heroContent} className="fade-in">
               <p style={styles.heroTagline}>{config.tagline}</p>
               <h1 style={styles.heroTitle}>
-                Find Your Path to
-                <span style={styles.heroTitleAccent}> Wellness</span>
+                {config.heroHeadline || "Caring for the Whole Person"}
+                <span style={styles.heroTitleAccent}> Mind, Body, and Spirit</span>
               </h1>
               <p style={styles.heroSubtitle}>
-                Compassionate counseling grounded in faith and backed by clinical expertise. 
-                Serving individuals, couples, and families across Western North Carolina.
+                {config.heroSubhead || "Faith-based counseling designed for real life. Evidence-based, compassionate, and centered on lasting change."}
               </p>
               <div style={styles.heroCtas}>
                 <button onClick={() => scrollToSection('contact')} className="cta-button" style={styles.primaryCta}>
@@ -486,16 +485,12 @@ const PeakWellness = () => {
             <div className="about-grid" style={styles.aboutContainer}>
               <div style={styles.aboutContent}>
                 <span style={styles.sectionLabel}>Who We Are</span>
-                <h2 style={styles.aboutTitle}>Healing Rooted in Faith, Guided by Excellence</h2>
+                <h2 style={styles.aboutTitle}>{config.aboutTitle || "Our Commitment to Faith-Integrated Counseling"}</h2>
+                {(config.aboutText || []).map((text, i) => (
+                  <p key={i} style={styles.aboutText}>{text}</p>
+                ))}
                 <p style={styles.aboutText}>
-                  Our practice is built on the hope and wisdom of the Christian faith, with Scripture 
-                  as our guiding foundation. While faith is central to our approach, we welcome and 
-                  serve individuals from all backgrounds with compassion, respect, and clinically sound care.
-                </p>
-                <p style={styles.aboutText}>
-                  We provide counseling in multiple locations throughout Western North Carolina and via 
-                  Telehealth in {config.telehealthStates.join(', ')} for those seeking to move to the next level of personal 
-                  and relationship development.
+                  We offer telehealth services in {config.telehealthStates.join(', ')}.
                 </p>
                 <div style={styles.aboutFeatures}>
                   {["In-network with major insurance providers", "Licensed, experienced counselors", "Flexible scheduling options"].map((feature, i) => (
@@ -669,6 +664,15 @@ const PeakWellness = () => {
                     </div>
                   </a>
                   <div style={styles.contactItem}>
+                    <span style={styles.contactIcon}>📍</span>
+                    <div>
+                      <p style={styles.contactLabel}>Address</p>
+                      <p style={styles.contactValue}>
+                        {config.address ? `${config.address.street}, ${config.address.city}, ${config.address.state} ${config.address.zip}` : ''}
+                      </p>
+                    </div>
+                  </div>
+                  <div style={styles.contactItem}>
                     <span style={styles.contactIcon}>🕐</span>
                     <div>
                       <p style={styles.contactLabel}>Hours</p>
@@ -772,7 +776,7 @@ const PeakWellness = () => {
         <div style={styles.footerContainer}>
           <div className="footer-main" style={styles.footerMain}>
             <div style={styles.footerBrand}>
-              <span style={styles.footerLogo}><img src="/logo.png" alt="" style={{ height: '30px', marginRight: '10px', verticalAlign: 'middle' }} /> {config.businessName}</span>
+              <span style={styles.footerLogo}>⛰️ {config.businessName}</span>
               <p style={styles.footerTagline}>{config.tagline}</p>
             </div>
             <div className="footer-links" style={styles.footerLinks}>
