@@ -10,19 +10,29 @@ export const config = {
   // BUSINESS INFO
   // ----------------------
   businessName: "Peak Wellness Centers",
-  tagline: "Christian Values · Clinical Excellence",
+  tagline: "Mind, Body, and Spirit",
+  heroHeadline: "Caring for the Whole Person",
+  heroSubhead: "Faith-based counseling designed for real life. Evidence-based, compassionate, and centered on lasting change.",
   
   // ----------------------
   // CONTACT INFORMATION
   // ----------------------
-  phone: "(828) 692-6383",
-  phoneRaw: "8286926383", // No dashes, used for tel: links
+  phone: "(828) 333-1285",
+  phoneRaw: "8283331285",
   email: "contact@peakwellnesscenters.com",
   
-  // Contact form - Choose ONE option:
-  // Option 1: Formspree (free, easy) - Sign up at formspree.io
+  // Contact form - Formspree (free, easy) - Sign up at formspree.io
   formspreeId: "YOUR_FORMSPREE_ID", // Replace with your Formspree form ID
-  // Option 2: Email directly (requires backend setup)
+  
+  // ----------------------
+  // ADDRESS
+  // ----------------------
+  address: {
+    street: "38 Rosscraggon Road",
+    city: "Asheville",
+    state: "NC",
+    zip: "28803"
+  },
   
   // ----------------------
   // HOURS
@@ -31,66 +41,59 @@ export const config = {
   afterHoursNote: "Messages left on Friday will be returned the following Monday.",
   
   // ----------------------
+  // ABOUT SECTION
+  // ----------------------
+  aboutTitle: "Our Commitment to Faith-Integrated Counseling",
+  aboutText: [
+    "Peak Wellness Centers was built on Christian compassion and clinical excellence.",
+    "We believe every person deserves access to care that honors both professional integrity and spiritual truth.",
+    "Our counselors combine evidence-based methods with faith-centered wisdom to help individuals, couples, and families find hope, healing, and renewed purpose."
+  ],
+  
+  // ----------------------
   // TEAM MEMBERS
   // ----------------------
-  // Add, remove, or edit team members here
   team: [
     {
-      name: "Dr. Sarah Mitchell",
-      role: "Clinical Director",
-      specialty: "Anxiety & Depression"
+      name: "Rev. Kevin Wimbish, MS, LMFT",
+      role: "Founder",
+      specialty: "Marriage & Family Therapy"
     },
     {
-      name: "James Crawford",
-      role: "Licensed Counselor",
+      name: "Michael Reed, LPC",
+      role: "Couples & Family Specialist",
       specialty: "Couples & Families"
     },
     {
-      name: "Amanda Chen",
-      role: "Licensed Therapist",
-      specialty: "Trauma & PTSD"
+      name: "Sarah Brooks, LCSW",
+      role: "Trauma & Grief Counselor",
+      specialty: "Trauma & Grief"
     },
     {
-      name: "Michael Torres",
-      role: "Licensed Counselor",
-      specialty: "Life Transitions"
+      name: "Jessie Logan, MA, LCMHCA",
+      role: "Teen & Young Adult Therapist",
+      specialty: "Teens & Young Adults"
     },
     {
-      name: "Rachel Kim",
-      role: "Licensed Therapist",
-      specialty: "Eating Disorders"
+      name: "Rachel Coleman",
+      role: "Intake & Care Coordination",
+      specialty: "Client Support"
     },
     {
-      name: "David Williams",
-      role: "Licensed Counselor",
-      specialty: "Addiction Recovery"
+      name: "Allen Williams",
+      role: "Business Manager",
+      specialty: "Operations"
     }
   ],
   
   // ----------------------
   // LOCATIONS
   // ----------------------
-  // Add, remove, or edit locations here
   locations: [
     {
       city: "Asheville",
-      address: "1293 Mountain View Dr, Suite 200",
-      phone: "(828) 692-6383"
-    },
-    {
-      city: "Hendersonville",
-      address: "456 Blue Ridge Parkway, Building B",
-      phone: "(828) 692-6384"
-    },
-    {
-      city: "Marion",
-      address: "789 Valley Springs Road",
-      phone: "(828) 692-6385"
-    },
-    {
-      city: "Spruce Pine",
-      address: "321 Highland Avenue",
-      phone: "(828) 692-6386"
+      address: "38 Rosscraggon Road",
+      phone: "(828) 333-1285"
     }
   ],
   
@@ -110,22 +113,52 @@ export const config = {
       details: ["Anxiety & Depression", "Life Transitions", "Grief & Loss", "Personal Growth"]
     },
     {
-      title: "Couples Counseling",
+      title: "Marriage Counseling",
       description: "Strengthen your relationship through improved communication, conflict resolution, and deeper connection.",
       icon: "💫",
-      details: ["Communication Skills", "Conflict Resolution", "Premarital Counseling", "Infidelity Recovery"]
+      details: ["Communication Skills", "Conflict Resolution", "Premarital Counseling", "Relationship Restoration"]
     },
     {
-      title: "Family Therapy",
-      description: "Build healthier dynamics, navigate transitions, and foster understanding across generations.",
+      title: "Trauma & Addiction Recovery",
+      description: "Find healing from past wounds and break free from cycles of addiction with faith-centered support.",
+      icon: "🕊️",
+      details: ["Trauma Recovery", "Addiction Support", "PTSD Treatment", "Healing & Restoration"]
+    },
+    {
+      title: "Family & Teen Support",
+      description: "Build healthier family dynamics and support your teens through life's challenges.",
       icon: "🏔️",
-      details: ["Parenting Support", "Blended Families", "Teen Issues", "Aging Parents"]
+      details: ["Parenting Support", "Teen Counseling", "Family Dynamics", "Young Adult Therapy"]
     },
     {
-      title: "Telehealth",
+      title: "Faith & Spiritual Guidance",
+      description: "Integrate your faith journey with mental health support for whole-person healing.",
+      icon: "✝️",
+      details: ["Spiritual Direction", "Faith Integration", "Biblical Counseling", "Purpose & Meaning"]
+    },
+    {
+      title: "Telehealth Sessions",
       description: "Access quality care from anywhere in NC, SC, TN, or FL through secure video sessions.",
-      icon: "✨",
+      icon: "💻",
       details: ["Secure Platform", "Flexible Scheduling", "Same Quality Care", "Multi-State Licensed"]
+    }
+  ],
+  
+  // ----------------------
+  // BENEFITS / FEATURES
+  // ----------------------
+  benefits: [
+    {
+      title: "Faith-Driven Care",
+      description: "Our clinicians integrate biblical truth with proven therapy approaches—no need to choose between your faith and your mental health."
+    },
+    {
+      title: "Experienced Clinicians",
+      description: "Licensed professionals with years of experience in trauma, marriage, and family therapy; trained to serve from a Christian worldview."
+    },
+    {
+      title: "Accessible & Flexible",
+      description: "Same-week appointments, telehealth options, and easy online scheduling make it simple to get started—wherever you are."
     }
   ],
   
@@ -134,16 +167,16 @@ export const config = {
   // ----------------------
   testimonials: [
     {
-      quote: "Peak Wellness has been transformative for our family. The counselors truly care and provide practical tools we use every day.",
-      author: "— Sarah M., Asheville"
+      quote: "Peak Wellness gave us tools to rebuild our marriage while growing stronger in our faith.",
+      author: "— Emily & Mark T."
     },
     {
-      quote: "I finally found a therapist who understands me. The combination of faith and clinical excellence is exactly what I needed.",
-      author: "— Michael T., Hendersonville"
+      quote: "I felt understood, not judged, and left each session with hope.",
+      author: "— J.S."
     },
     {
-      quote: "After years of struggling, I'm finally seeing real progress. The team here is exceptional.",
-      author: "— Jennifer R., Marion"
+      quote: "The combination of professional guidance and prayer changed everything.",
+      author: "— Carol S."
     }
   ],
   
@@ -165,7 +198,7 @@ export const config = {
   faqItems: [
     {
       question: "How do I schedule an appointment?",
-      answer: "You can schedule an appointment by calling our office at (828) 692-6383, sending us an email, or filling out our contact form. We'll get back to you within 24 hours to find a time that works for you."
+      answer: "You can schedule an appointment by calling our office at (828) 333-1285, sending us an email, or filling out our contact form. We offer same-week appointments and will get back to you within 24 hours."
     },
     {
       question: "Do you accept insurance?",
@@ -194,6 +227,10 @@ export const config = {
     {
       question: "Is everything I share confidential?",
       answer: "Yes, confidentiality is fundamental to our practice. What you share in therapy stays between you and your counselor, with limited exceptions required by law (such as imminent danger to yourself or others)."
+    },
+    {
+      question: "How is faith integrated into counseling?",
+      answer: "Our counselors integrate biblical truth with evidence-based therapy approaches. We honor your faith journey while providing professional clinical care. You don't have to choose between your faith and your mental health."
     }
   ],
   
@@ -201,8 +238,8 @@ export const config = {
   // SOCIAL MEDIA (optional)
   // ----------------------
   socialMedia: {
-    facebook: "", // e.g., "https://facebook.com/peakwellness"
-    instagram: "", // e.g., "https://instagram.com/peakwellness"
+    facebook: "",
+    instagram: "",
     linkedin: ""
   }
 };
