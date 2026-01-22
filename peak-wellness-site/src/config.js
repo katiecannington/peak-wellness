@@ -1,5 +1,5 @@
 // ============================================================
-// PEAK WELLNESS CENTERS - WEBSITE CONFIGURATION
+// PEAK WELLNESS CENTERS PLLC - WEBSITE CONFIGURATION
 // ============================================================
 // Edit this file to update your website content!
 // After making changes, save the file and redeploy to Vercel.
@@ -9,7 +9,7 @@ export const config = {
   // ----------------------
   // BUSINESS INFO
   // ----------------------
-  businessName: "Peak Wellness Centers",
+  businessName: "Peak Wellness Centers PLLC",
   tagline: "Mind, Body, and Spirit",
   heroHeadline: "Caring for the Whole Person",
   heroSubhead: "Faith-based counseling designed for real life. Evidence-based, compassionate, and centered on lasting change.",
@@ -21,8 +21,15 @@ export const config = {
   phoneRaw: "8283331285",
   email: "contact@peakwellnesscenters.com",
   
-  // Contact form - Formspree (free, easy) - Sign up at formspree.io
-  formspreeId: "YOUR_FORMSPREE_ID", // Replace with your Formspree form ID
+  // ----------------------
+  // FORM SETUP (Formspree)
+  // ----------------------
+  // 1. Go to https://formspree.io and create a free account
+  // 2. Click "New Form" and give it a name like "Peak Wellness Contact"
+  // 3. Copy the form ID (the part after /f/ in your form URL)
+  // 4. Paste it below, replacing YOUR_FORMSPREE_ID
+  // 5. When someone submits the form, you'll get an email!
+  formspreeId: "mnjpqjvq",
   
   // ----------------------
   // ADDRESS
@@ -45,7 +52,7 @@ export const config = {
   // ----------------------
   aboutTitle: "Our Commitment to Faith-Integrated Counseling",
   aboutText: [
-    "Peak Wellness Centers was built on Christian compassion and clinical excellence.",
+    "Peak Wellness Centers PLLC was built on Christian compassion and clinical excellence.",
     "We believe every person deserves access to care that honors both professional integrity and spiritual truth.",
     "Our counselors combine evidence-based methods with faith-centered wisdom to help individuals, couples, and families find hope, healing, and renewed purpose."
   ],
@@ -53,36 +60,26 @@ export const config = {
   // ----------------------
   // TEAM MEMBERS
   // ----------------------
+  // Images should be uploaded to the /public folder on GitHub
+  // Use the exact filename you uploaded (e.g., "kevin_picture.png")
   team: [
     {
-      name: "Rev. Kevin Wimbish, MS, LMFT",
+      name: "Kevin Wimbush",
       role: "Founder",
-      specialty: "Marriage & Family Therapy"
+      specialty: "Marriage & Family Therapy",
+      image: "/kevin_picture.png"
     },
     {
-      name: "Michael Reed, LPC",
-      role: "Couples & Family Specialist",
-      specialty: "Couples & Families"
-    },
-    {
-      name: "Sarah Brooks, LCSW",
-      role: "Trauma & Grief Counselor",
-      specialty: "Trauma & Grief"
-    },
-    {
-      name: "Jessie Logan, MA, LCMHCA",
-      role: "Teen & Young Adult Therapist",
-      specialty: "Teens & Young Adults"
-    },
-    {
-      name: "Rachel Coleman",
-      role: "Intake & Care Coordination",
-      specialty: "Client Support"
+      name: "Morgan Nichols",
+      role: "Licensed Counselor",
+      specialty: "Clinical Counseling",
+      image: "/morgan_picture.png"
     },
     {
       name: "Allen Williams",
       role: "Business Manager",
-      specialty: "Operations"
+      specialty: "Operations",
+      image: "/allen_picture.png"
     }
   ],
   
@@ -103,43 +100,43 @@ export const config = {
   telehealthStates: ["NC", "SC", "TN", "FL"],
   
   // ----------------------
-  // SERVICES
+  // SERVICES (using cleaner icons)
   // ----------------------
   services: [
     {
       title: "Individual Therapy",
       description: "Navigate anxiety, depression, life transitions, and personal growth with compassionate one-on-one support.",
-      icon: "🌱",
+      icon: "person",
       details: ["Anxiety & Depression", "Life Transitions", "Grief & Loss", "Personal Growth"]
     },
     {
       title: "Marriage Counseling",
       description: "Strengthen your relationship through improved communication, conflict resolution, and deeper connection.",
-      icon: "💫",
+      icon: "heart",
       details: ["Communication Skills", "Conflict Resolution", "Premarital Counseling", "Relationship Restoration"]
     },
     {
       title: "Trauma & Addiction Recovery",
       description: "Find healing from past wounds and break free from cycles of addiction with faith-centered support.",
-      icon: "🕊️",
+      icon: "shield",
       details: ["Trauma Recovery", "Addiction Support", "PTSD Treatment", "Healing & Restoration"]
     },
     {
       title: "Family & Teen Support",
       description: "Build healthier family dynamics and support your teens through life's challenges.",
-      icon: "🏔️",
+      icon: "family",
       details: ["Parenting Support", "Teen Counseling", "Family Dynamics", "Young Adult Therapy"]
     },
     {
       title: "Faith & Spiritual Guidance",
       description: "Integrate your faith journey with mental health support for whole-person healing.",
-      icon: "✝️",
+      icon: "cross",
       details: ["Spiritual Direction", "Faith Integration", "Biblical Counseling", "Purpose & Meaning"]
     },
     {
       title: "Telehealth Sessions",
       description: "Access quality care from anywhere in NC, SC, TN, or FL through secure video sessions.",
-      icon: "💻",
+      icon: "video",
       details: ["Secure Platform", "Flexible Scheduling", "Same Quality Care", "Multi-State Licensed"]
     }
   ],
