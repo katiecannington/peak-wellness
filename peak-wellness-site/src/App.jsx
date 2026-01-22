@@ -1,11 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import { config } from './config';
 
+// Clean, professional SVG icons
+const Icons = {
+  person: (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <circle cx="12" cy="8" r="4"/>
+      <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+    </svg>
+  ),
+  heart: (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M12 21C12 21 4 14 4 8.5C4 5.5 6.5 3 9.5 3C11 3 12 4 12 4C12 4 13 3 14.5 3C17.5 3 20 5.5 20 8.5C20 14 12 21 12 21Z"/>
+    </svg>
+  ),
+  shield: (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M12 3L4 7V12C4 16.4 7.4 20.5 12 21.5C16.6 20.5 20 16.4 20 12V7L12 3Z"/>
+      <path d="M9 12L11 14L15 10"/>
+    </svg>
+  ),
+  family: (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <circle cx="8" cy="6" r="2.5"/>
+      <circle cx="16" cy="6" r="2.5"/>
+      <path d="M3 18c0-3 2.5-4.5 5-4.5s5 1.5 5 4.5"/>
+      <path d="M11 18c0-3 2.5-4.5 5-4.5s5 1.5 5 4.5"/>
+      <circle cx="12" cy="13" r="2"/>
+    </svg>
+  ),
+  cross: (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M12 4V20M8 8H16"/>
+    </svg>
+  ),
+  video: (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="2" y="6" width="13" height="12" rx="2"/>
+      <path d="M15 10L22 6V18L15 14"/>
+    </svg>
+  )
+};
+
 const PeakWellness = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [currentPage, setCurrentPage] = useState('home'); // 'home' or 'resources'
+  const [currentPage, setCurrentPage] = useState('home');
   const [expandedFaq, setExpandedFaq] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -13,7 +54,7 @@ const PeakWellness = () => {
     email: '',
     message: ''
   });
-  const [formStatus, setFormStatus] = useState('idle'); // 'idle', 'submitting', 'success', 'error'
+  const [formStatus, setFormStatus] = useState('idle');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +93,6 @@ const PeakWellness = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Contact form submission using Formspree
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus('submitting');
@@ -60,9 +100,7 @@ const PeakWellness = () => {
     try {
       const response = await fetch(`https://formspree.io/f/${config.formspreeId}`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: formData.name,
           phone: formData.phone,
@@ -85,7 +123,6 @@ const PeakWellness = () => {
     }
   };
 
-  const [expandedService, setExpandedService] = useState(null);
   const [hoveredTeam, setHoveredTeam] = useState(null);
 
   // Resources Page Component
@@ -182,9 +219,7 @@ const PeakWellness = () => {
               <h3>Protection Against Surprise Medical Bills</h3>
               <p style={{ marginBottom: '16px', lineHeight: '1.7' }}>
                 You have the right to receive a "Good Faith Estimate" explaining how much your 
-                medical care will cost. Under the law, health care providers need to give patients 
-                who don't have insurance or who are not using insurance an estimate of the bill 
-                for medical items and services.
+                medical care will cost.
               </p>
               <p style={{ lineHeight: '1.7' }}>
                 For questions or more information about your right to a Good Faith Estimate, 
@@ -206,18 +241,15 @@ const PeakWellness = () => {
               <h3>Confidentiality</h3>
               <p>
                 Your privacy is of utmost importance to us. All information shared during therapy 
-                sessions is kept strictly confidential, with limited exceptions required by law. 
-                These exceptions include situations involving imminent danger to yourself or others, 
-                suspected child or elder abuse, or when required by court order.
+                sessions is kept strictly confidential, with limited exceptions required by law.
               </p>
             </div>
             
             <div style={styles.privacySection}>
               <h3>HIPAA Compliance</h3>
               <p>
-                Peak Wellness Centers is fully compliant with the Health Insurance Portability and 
-                Accountability Act (HIPAA). We maintain strict protocols to protect your protected 
-                health information (PHI) in both physical and electronic formats.
+                {config.businessName} is fully compliant with the Health Insurance Portability and 
+                Accountability Act (HIPAA).
               </p>
             </div>
             
@@ -225,17 +257,7 @@ const PeakWellness = () => {
               <h3>Telehealth Privacy</h3>
               <p>
                 Our telehealth services use secure, HIPAA-compliant video platforms to ensure your 
-                sessions remain private. We recommend using a private space and secure internet 
-                connection for telehealth appointments.
-              </p>
-            </div>
-            
-            <div style={styles.privacySection}>
-              <h3>Website Data</h3>
-              <p>
-                This website does not collect personal information unless you voluntarily submit it 
-                through our contact form. Information submitted through the contact form is used 
-                solely to respond to your inquiry and is not shared with third parties.
+                sessions remain private.
               </p>
             </div>
             
@@ -305,7 +327,7 @@ const PeakWellness = () => {
         .service-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(45, 80, 72, 0.15); }
         
         .team-card { transition: all 0.3s ease; }
-        .team-card:hover { transform: scale(1.03); background: rgba(91, 138, 114, 0.05); }
+        .team-card:hover { transform: scale(1.02); }
         
         .location-card { transition: all 0.3s ease; }
         .location-card:hover { background: linear-gradient(135deg, #5B8A72 0%, #2D5048 100%); }
@@ -327,7 +349,6 @@ const PeakWellness = () => {
         
         .submit-btn { transition: all 0.3s ease; }
         .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(91, 138, 114, 0.3); }
-        .submit-btn:active { transform: translateY(0); }
         
         .secondary-cta { transition: all 0.2s ease; }
         .secondary-cta:hover { transform: translateX(5px); }
@@ -347,7 +368,7 @@ const PeakWellness = () => {
           .desktop-nav { display: none !important; }
           .mobile-toggle { display: flex !important; }
           .services-grid { grid-template-columns: 1fr !important; }
-          .team-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .team-grid { grid-template-columns: 1fr !important; }
           .locations-grid { grid-template-columns: 1fr !important; }
           .about-grid { grid-template-columns: 1fr !important; }
           .contact-grid { grid-template-columns: 1fr !important; }
@@ -368,7 +389,7 @@ const PeakWellness = () => {
       }}>
         <div style={styles.navContainer}>
           <div style={styles.logo} onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }}>
-            <span style={styles.logoIcon}>⛰️</span>
+            <img src="/peak_icon.png" alt="Peak Wellness" style={styles.logoImage} />
             <span style={styles.logoText}>{config.businessName}</span>
           </div>
           
@@ -451,25 +472,24 @@ const PeakWellness = () => {
               <p style={styles.heroTagline}>{config.tagline}</p>
               <h1 style={styles.heroTitle}>
                 {config.heroHeadline || "Caring for the Whole Person"}
-                <span style={styles.heroTitleAccent}> Mind, Body, and Spirit</span>
               </h1>
               <p style={styles.heroSubtitle}>
                 {config.heroSubhead || "Faith-based counseling designed for real life. Evidence-based, compassionate, and centered on lasting change."}
               </p>
               <div style={styles.heroCtas}>
                 <button onClick={() => scrollToSection('contact')} className="cta-button" style={styles.primaryCta}>
-                  Begin Your Journey
+                  Get Started
                 </button>
                 <button onClick={() => scrollToSection('services')} className="secondary-cta" style={styles.secondaryCta}>
-                  Explore Services →
+                  Our Services →
                 </button>
               </div>
             </div>
             
             <div className="hero-stats" style={styles.heroStats}>
               {[
-                { number: `${config.team.length}+`, label: "Licensed Counselors" },
-                { number: config.locations.length.toString(), label: "Convenient Locations" },
+                { number: `${config.team.length}`, label: "Team Members" },
+                { number: config.locations.length.toString(), label: "Location" },
                 { number: config.telehealthStates.length.toString(), label: "States via Telehealth" }
               ].map((stat, i) => (
                 <div key={i} style={styles.statItem} className={`fade-in delay-${i + 1}`}>
@@ -489,14 +509,14 @@ const PeakWellness = () => {
                 {(config.aboutText || []).map((text, i) => (
                   <p key={i} style={styles.aboutText}>{text}</p>
                 ))}
-                <p style={styles.aboutText}>
-                  We offer telehealth services in {config.telehealthStates.join(', ')}.
-                </p>
                 <div style={styles.aboutFeatures}>
-                  {["In-network with major insurance providers", "Licensed, experienced counselors", "Flexible scheduling options"].map((feature, i) => (
+                  {(config.benefits || []).map((benefit, i) => (
                     <div key={i} style={styles.featureItem}>
                       <span style={styles.featureIcon}>✓</span>
-                      <span>{feature}</span>
+                      <div>
+                        <strong>{benefit.title}</strong>
+                        <p style={{ margin: '4px 0 0', color: '#5A6B62', fontSize: '14px' }}>{benefit.description}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -519,25 +539,13 @@ const PeakWellness = () => {
               
               <div className="services-grid" style={styles.servicesGrid}>
                 {config.services.map((service, index) => (
-                  <div 
-                    key={index} 
-                    className="service-card" 
-                    style={styles.serviceCard}
-                    onClick={() => setExpandedService(expandedService === index ? null : index)}
-                  >
-                    <span style={styles.serviceIcon}>{service.icon}</span>
+                  <div key={index} className="service-card" style={styles.serviceCard}>
+                    <div style={styles.serviceIconWrapper}>
+                      {Icons[service.icon] || Icons.person}
+                    </div>
                     <h3 style={styles.serviceTitle}>{service.title}</h3>
                     <p style={styles.serviceDescription}>{service.description}</p>
-                    
-                    {expandedService === index && (
-                      <div style={styles.serviceDetails}>
-                        {service.details.map((detail, i) => (
-                          <span key={i} style={styles.serviceTag}>{detail}</span>
-                        ))}
-                      </div>
-                    )}
-                    
-                    <button onClick={(e) => { e.stopPropagation(); scrollToSection('contact'); }} style={styles.serviceLink}>
+                    <button onClick={() => scrollToSection('contact')} style={styles.serviceLink}>
                       Get Started →
                     </button>
                   </div>
@@ -550,27 +558,34 @@ const PeakWellness = () => {
           <section id="team" style={styles.teamSection}>
             <div style={styles.sectionContainer}>
               <span style={styles.sectionLabel}>Our Team</span>
-              <h2 style={styles.sectionTitle}>Meet Our Counselors</h2>
-              <p style={styles.sectionSubtitle}>A dedicated team of licensed professionals committed to your wellbeing.</p>
+              <h2 style={styles.sectionTitle}>Meet the Team</h2>
+              <p style={styles.sectionSubtitle}>Our team combines diverse expertise with a shared belief: that true healing begins when faith meets professional care.</p>
               
               <div className="team-grid" style={styles.teamGrid}>
                 {config.team.map((member, index) => (
                   <div 
                     key={index} 
                     className="team-card" 
-                    style={{
-                      ...styles.teamCard,
-                      background: hoveredTeam === index ? 'rgba(91, 138, 114, 0.05)' : 'transparent'
-                    }}
+                    style={styles.teamCard}
                     onMouseEnter={() => setHoveredTeam(index)}
                     onMouseLeave={() => setHoveredTeam(null)}
                   >
-                    <div style={{
-                      ...styles.teamAvatar,
-                      transform: hoveredTeam === index ? 'scale(1.1)' : 'scale(1)',
-                      transition: 'transform 0.3s ease'
-                    }}>
-                      {member.name.split(' ').map(n => n[0]).join('')}
+                    <div style={styles.teamImageWrapper}>
+                      <img 
+                        src={member.image} 
+                        alt={member.name}
+                        style={{
+                          ...styles.teamImage,
+                          transform: hoveredTeam === index ? 'scale(1.05)' : 'scale(1)',
+                        }}
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      <div style={{ ...styles.teamAvatarFallback, display: 'none' }}>
+                        {member.name.split(' ').map(n => n[0]).join('')}
+                      </div>
                     </div>
                     <h4 style={styles.teamName}>{member.name}</h4>
                     <p style={styles.teamRole}>{member.role}</p>
@@ -580,8 +595,7 @@ const PeakWellness = () => {
               </div>
               
               <p style={styles.teamNote}>
-                Our counselors maintain flexible schedules across all locations. 
-                <button onClick={() => scrollToSection('contact')} style={styles.inlineLink}> Contact us</button> to find the right fit for you.
+                <button onClick={() => scrollToSection('contact')} style={styles.inlineLink}>Contact us</button> to schedule with a team member.
               </p>
             </div>
           </section>
@@ -590,7 +604,7 @@ const PeakWellness = () => {
           <section style={styles.testimonialsSection}>
             <div style={styles.sectionContainer}>
               <span style={styles.sectionLabelLight}>Testimonials</span>
-              <h2 style={styles.sectionTitleLight}>Stories of Transformation</h2>
+              <h2 style={styles.sectionTitleLight}>What Our Clients Are Saying</h2>
               
               <div className="testimonials-grid" style={styles.testimonialsGrid}>
                 {config.testimonials.map((testimonial, index) => (
@@ -607,16 +621,15 @@ const PeakWellness = () => {
           {/* Locations Section */}
           <section id="locations" style={styles.locationsSection}>
             <div style={styles.sectionContainer}>
-              <span style={styles.sectionLabel}>Locations</span>
-              <h2 style={styles.sectionTitle}>Find Us Near You</h2>
+              <span style={styles.sectionLabel}>Location</span>
+              <h2 style={styles.sectionTitle}>Find Us</h2>
               <p style={styles.sectionSubtitle}>
-                Multiple convenient locations throughout Western North Carolina, plus Telehealth 
-                services available in {config.telehealthStates.join(', ')}.
+                Visit us in person or connect via telehealth in {config.telehealthStates.join(', ')}.
               </p>
               
-              <div className="locations-grid" style={styles.locationsGrid}>
+              <div className="locations-grid" style={styles.locationsGridSingle}>
                 {config.locations.map((location, index) => (
-                  <div key={index} className="location-card" style={styles.locationCard}>
+                  <div key={index} className="location-card" style={styles.locationCardLarge}>
                     <h4 style={styles.locationCity}>{location.city}</h4>
                     <p style={styles.locationAddress}>{location.address}</p>
                     <p style={styles.locationPhone}>{location.phone}</p>
@@ -625,7 +638,9 @@ const PeakWellness = () => {
               </div>
               
               <div style={styles.telehealthBanner}>
-                <span style={styles.telehealthIcon}>💻</span>
+                <div style={styles.telehealthIconWrapper}>
+                  {Icons.video}
+                </div>
                 <div>
                   <h4 style={styles.telehealthTitle}>Telehealth Available</h4>
                   <p style={styles.telehealthText}>Secure video sessions for clients in {config.telehealthStates.join(', ')}</p>
@@ -642,10 +657,10 @@ const PeakWellness = () => {
             <div className="contact-grid" style={styles.contactContainer}>
               <div style={styles.contactInfo}>
                 <span style={styles.sectionLabelLight}>Get Started</span>
-                <h2 style={styles.contactTitle}>Begin Your Journey Today</h2>
+                <h2 style={styles.contactTitle}>Start Your Journey Toward Healing</h2>
                 <p style={styles.contactText}>
                   Taking the first step toward wellness can feel daunting, but you don't have 
-                  to do it alone. Reach out to schedule your first appointment or ask any questions.
+                  to do it alone. Reach out to schedule your first appointment.
                 </p>
                 
                 <div style={styles.contactDetails}>
@@ -670,13 +685,6 @@ const PeakWellness = () => {
                       <p style={styles.contactValue}>
                         {config.address ? `${config.address.street}, ${config.address.city}, ${config.address.state} ${config.address.zip}` : ''}
                       </p>
-                    </div>
-                  </div>
-                  <div style={styles.contactItem}>
-                    <span style={styles.contactIcon}>🕐</span>
-                    <div>
-                      <p style={styles.contactLabel}>Hours</p>
-                      <p style={styles.contactValue}>{config.hours}</p>
                     </div>
                   </div>
                 </div>
@@ -708,51 +716,57 @@ const PeakWellness = () => {
                   </div>
                 ) : (
                   <form style={styles.form} onSubmit={handleSubmit}>
-                    <div style={styles.formGroup}>
-                      <label style={styles.formLabel}>Your Name *</label>
-                      <input 
-                        type="text" 
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        style={styles.formInput} 
-                        placeholder="John Smith"
-                        required
-                      />
+                    <div style={styles.formRow}>
+                      <div style={styles.formGroup}>
+                        <label style={styles.formLabel}>First Name *</label>
+                        <input 
+                          type="text" 
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          style={styles.formInput} 
+                          required
+                        />
+                      </div>
+                      <div style={styles.formGroup}>
+                        <label style={styles.formLabel}>Last Name *</label>
+                        <input 
+                          type="text" 
+                          name="lastName"
+                          style={styles.formInput} 
+                          required
+                        />
+                      </div>
                     </div>
                     <div style={styles.formGroup}>
-                      <label style={styles.formLabel}>Phone Number *</label>
-                      <input 
-                        type="tel" 
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        style={styles.formInput} 
-                        placeholder="(828) 555-0123"
-                        required
-                      />
-                    </div>
-                    <div style={styles.formGroup}>
-                      <label style={styles.formLabel}>Email Address *</label>
+                      <label style={styles.formLabel}>Email *</label>
                       <input 
                         type="email" 
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
                         style={styles.formInput} 
-                        placeholder="john@example.com"
                         required
                       />
                     </div>
                     <div style={styles.formGroup}>
-                      <label style={styles.formLabel}>Message</label>
+                      <label style={styles.formLabel}>Phone</label>
+                      <input 
+                        type="tel" 
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        style={styles.formInput} 
+                      />
+                    </div>
+                    <div style={styles.formGroup}>
+                      <label style={styles.formLabel}>How Can We Help You?</label>
                       <textarea 
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
                         style={styles.formTextarea} 
                         rows={4} 
-                        placeholder="How can we help you?"
                       />
                     </div>
                     <button 
@@ -761,7 +775,7 @@ const PeakWellness = () => {
                       style={styles.submitButton}
                       disabled={formStatus === 'submitting'}
                     >
-                      {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+                      {formStatus === 'submitting' ? 'Sending...' : 'Submit'}
                     </button>
                   </form>
                 )}
@@ -776,13 +790,15 @@ const PeakWellness = () => {
         <div style={styles.footerContainer}>
           <div className="footer-main" style={styles.footerMain}>
             <div style={styles.footerBrand}>
-              <span style={styles.footerLogo}>⛰️ {config.businessName}</span>
+              <div style={styles.footerLogoWrapper}>
+                <img src="/peak_full.png" alt={config.businessName} style={styles.footerLogoImage} />
+              </div>
               <p style={styles.footerTagline}>{config.tagline}</p>
             </div>
             <div className="footer-links" style={styles.footerLinks}>
               <div style={styles.footerColumn}>
                 <h4 style={styles.footerHeading}>Services</h4>
-                {config.services.map((service, i) => (
+                {config.services.slice(0, 4).map((service, i) => (
                   <button key={i} onClick={() => scrollToSection('services')} className="footer-link" style={styles.footerLink}>
                     {service.title}
                   </button>
@@ -796,14 +812,18 @@ const PeakWellness = () => {
                 <button onClick={() => { setCurrentPage('resources'); window.scrollTo(0, 0); }} className="footer-link" style={styles.footerLink}>Privacy Policy</button>
               </div>
               <div style={styles.footerColumn}>
-                <h4 style={styles.footerHeading}>Connect</h4>
+                <h4 style={styles.footerHeading}>Contact</h4>
                 <a href={`tel:${config.phoneRaw}`} className="footer-link" style={styles.footerLink}>{config.phone}</a>
                 <a href={`mailto:${config.email}`} className="footer-link" style={styles.footerLink}>{config.email}</a>
+                <p style={styles.footerAddress}>
+                  {config.address ? `${config.address.street}` : ''}<br/>
+                  {config.address ? `${config.address.city}, ${config.address.state} ${config.address.zip}` : ''}
+                </p>
               </div>
             </div>
           </div>
           <div style={styles.footerBottom}>
-            <p style={styles.footerCopyright}>© {new Date().getFullYear()} {config.businessName}, PLLC. All rights reserved.</p>
+            <p style={styles.footerCopyright}>© {new Date().getFullYear()} {config.businessName}. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -811,7 +831,7 @@ const PeakWellness = () => {
   );
 };
 
-// Styles object (comprehensive)
+// Styles
 const styles = {
   container: {
     fontFamily: "'Outfit', sans-serif",
@@ -828,7 +848,7 @@ const styles = {
     left: 0,
     right: 0,
     zIndex: 1000,
-    padding: '16px 0',
+    padding: '12px 0',
     transition: 'all 0.3s ease'
   },
   navContainer: {
@@ -842,27 +862,30 @@ const styles = {
   logo: {
     display: 'flex',
     alignItems: 'center',
-    gap: '10px',
+    gap: '12px',
     cursor: 'pointer'
   },
-  logoIcon: { fontSize: '28px' },
+  logoImage: {
+    height: '44px',
+    width: 'auto'
+  },
   logoText: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: '24px',
+    fontSize: '20px',
     fontWeight: '600',
     color: '#2D5048'
   },
   navLinks: {
     display: 'flex',
     alignItems: 'center',
-    gap: '32px'
+    gap: '28px'
   },
   navLink: {
     background: 'none',
     border: 'none',
     color: '#2D3B35',
     cursor: 'pointer',
-    fontSize: '15px',
+    fontSize: '14px',
     fontWeight: '500',
     fontFamily: "'Outfit', sans-serif",
     padding: '8px 0'
@@ -870,7 +893,7 @@ const styles = {
   navCta: {
     background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
     color: 'white',
-    padding: '12px 24px',
+    padding: '10px 20px',
     borderRadius: '30px',
     border: 'none',
     cursor: 'pointer',
@@ -963,19 +986,15 @@ const styles = {
     letterSpacing: '3px',
     textTransform: 'uppercase',
     color: '#5B8A72',
-    marginBottom: '24px'
+    marginBottom: '20px'
   },
   heroTitle: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 'clamp(42px, 8vw, 80px)',
+    fontSize: 'clamp(40px, 7vw, 72px)',
     fontWeight: '400',
     lineHeight: '1.1',
     color: '#2D3B35',
     marginBottom: '24px'
-  },
-  heroTitleAccent: {
-    color: '#5B8A72',
-    fontStyle: 'italic'
   },
   heroSubtitle: {
     fontSize: '18px',
@@ -995,7 +1014,7 @@ const styles = {
     display: 'inline-block',
     background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
     color: 'white',
-    padding: '18px 40px',
+    padding: '16px 36px',
     borderRadius: '40px',
     border: 'none',
     cursor: 'pointer',
@@ -1008,7 +1027,7 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
     color: '#5B8A72',
-    padding: '18px 32px',
+    padding: '16px 28px',
     background: 'none',
     border: 'none',
     cursor: 'pointer',
@@ -1029,7 +1048,7 @@ const styles = {
   statNumber: {
     display: 'block',
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: '42px',
+    fontSize: '40px',
     fontWeight: '600',
     color: '#5B8A72'
   },
@@ -1041,7 +1060,7 @@ const styles = {
   
   // About Section
   aboutSection: {
-    padding: '120px 32px',
+    padding: '100px 32px',
     background: '#FFFDF9'
   },
   aboutContainer: {
@@ -1064,7 +1083,7 @@ const styles = {
   },
   aboutTitle: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 'clamp(32px, 5vw, 44px)',
+    fontSize: 'clamp(28px, 4vw, 40px)',
     fontWeight: '500',
     lineHeight: '1.2',
     color: '#2D3B35',
@@ -1074,24 +1093,25 @@ const styles = {
     fontSize: '16px',
     lineHeight: '1.8',
     color: '#5A6B62',
-    marginBottom: '20px'
+    marginBottom: '16px'
   },
   aboutFeatures: {
     marginTop: '32px',
     display: 'flex',
     flexDirection: 'column',
-    gap: '16px'
+    gap: '20px'
   },
   featureItem: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     gap: '12px',
     fontSize: '15px',
     color: '#2D3B35'
   },
   featureIcon: {
     color: '#5B8A72',
-    fontWeight: '700'
+    fontWeight: '700',
+    marginTop: '2px'
   },
   aboutVisual: {
     display: 'flex',
@@ -1099,18 +1119,18 @@ const styles = {
   },
   visualCard: {
     background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
-    padding: '60px 50px',
-    borderRadius: '24px',
-    maxWidth: '400px',
-    boxShadow: '0 30px 60px rgba(45, 80, 72, 0.2)'
+    padding: '50px 40px',
+    borderRadius: '20px',
+    maxWidth: '380px',
+    boxShadow: '0 25px 50px rgba(45, 80, 72, 0.2)'
   },
   visualQuote: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 'clamp(22px, 3vw, 28px)',
+    fontSize: 'clamp(20px, 2.5vw, 26px)',
     fontStyle: 'italic',
     color: 'white',
     lineHeight: '1.5',
-    marginBottom: '24px'
+    marginBottom: '20px'
   },
   visualAttribution: {
     fontSize: '14px',
@@ -1120,72 +1140,65 @@ const styles = {
   
   // Services Section
   servicesSection: {
-    padding: '120px 32px',
+    padding: '100px 32px',
     background: 'linear-gradient(180deg, #F7F5F0 0%, #FFFDF9 100%)'
   },
   sectionContainer: {
-    maxWidth: '1200px',
+    maxWidth: '1100px',
     margin: '0 auto'
   },
   sectionTitle: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 'clamp(36px, 5vw, 48px)',
+    fontSize: 'clamp(32px, 5vw, 44px)',
     fontWeight: '500',
     color: '#2D3B35',
     marginBottom: '16px',
     textAlign: 'center'
   },
   sectionSubtitle: {
-    fontSize: '17px',
+    fontSize: '16px',
     color: '#5A6B62',
     textAlign: 'center',
     maxWidth: '600px',
-    margin: '0 auto 60px',
+    margin: '0 auto 50px',
     lineHeight: '1.7'
   },
   servicesGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
+    gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '24px'
   },
   serviceCard: {
     background: 'white',
-    padding: '40px 32px',
-    borderRadius: '20px',
-    boxShadow: '0 8px 30px rgba(45, 80, 72, 0.06)',
-    cursor: 'pointer'
+    padding: '36px 28px',
+    borderRadius: '16px',
+    boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)',
+    cursor: 'pointer',
+    border: '1px solid rgba(45, 80, 72, 0.06)'
   },
-  serviceIcon: {
-    fontSize: '40px',
+  serviceIconWrapper: {
+    width: '56px',
+    height: '56px',
+    borderRadius: '12px',
+    background: 'linear-gradient(135deg, rgba(91, 138, 114, 0.1) 0%, rgba(45, 80, 72, 0.1) 100%)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: '20px',
-    display: 'block'
+    color: '#5B8A72'
   },
   serviceTitle: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: '24px',
+    fontSize: '22px',
     fontWeight: '600',
     color: '#2D3B35',
     marginBottom: '12px'
   },
   serviceDescription: {
-    fontSize: '15px',
+    fontSize: '14px',
     color: '#5A6B62',
     lineHeight: '1.7',
     marginBottom: '20px'
-  },
-  serviceDetails: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '8px',
-    marginBottom: '20px'
-  },
-  serviceTag: {
-    background: 'rgba(91, 138, 114, 0.1)',
-    color: '#5B8A72',
-    padding: '6px 12px',
-    borderRadius: '20px',
-    fontSize: '12px',
-    fontWeight: '600'
   },
   serviceLink: {
     fontSize: '14px',
@@ -1200,53 +1213,68 @@ const styles = {
   
   // Team Section
   teamSection: {
-    padding: '120px 32px',
+    padding: '100px 32px',
     background: '#FFFDF9'
   },
   teamGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(6, 1fr)',
-    gap: '24px',
-    marginBottom: '40px'
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '32px',
+    marginBottom: '40px',
+    maxWidth: '900px',
+    margin: '0 auto 40px'
   },
   teamCard: {
     textAlign: 'center',
-    padding: '32px 16px',
+    padding: '24px',
     borderRadius: '16px',
-    cursor: 'pointer'
+    background: 'white',
+    boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)',
+    border: '1px solid rgba(45, 80, 72, 0.06)'
   },
-  teamAvatar: {
-    width: '80px',
-    height: '80px',
+  teamImageWrapper: {
+    width: '120px',
+    height: '120px',
     borderRadius: '50%',
-    background: 'linear-gradient(135deg, #A8C6B6 0%, #5B8A72 100%)',
+    overflow: 'hidden',
+    margin: '0 auto 16px',
+    background: 'linear-gradient(135deg, #A8C6B6 0%, #5B8A72 100%)'
+  },
+  teamImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    transition: 'transform 0.3s ease'
+  },
+  teamAvatarFallback: {
+    width: '100%',
+    height: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '0 auto 16px',
-    fontSize: '24px',
+    fontSize: '32px',
     fontWeight: '600',
     color: 'white',
     fontFamily: "'Cormorant Garamond', serif"
   },
   teamName: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: '18px',
+    fontSize: '20px',
     fontWeight: '600',
     color: '#2D3B35',
     marginBottom: '4px'
   },
   teamRole: {
-    fontSize: '13px',
+    fontSize: '14px',
     color: '#5A6B62',
-    marginBottom: '8px'
+    marginBottom: '12px'
   },
   teamSpecialty: {
     fontSize: '12px',
     color: '#5B8A72',
     fontWeight: '600',
     background: 'rgba(91, 138, 114, 0.1)',
-    padding: '6px 12px',
+    padding: '6px 14px',
     borderRadius: '20px',
     display: 'inline-block'
   },
@@ -1268,7 +1296,7 @@ const styles = {
   
   // Testimonials Section
   testimonialsSection: {
-    padding: '120px 32px',
+    padding: '100px 32px',
     background: 'linear-gradient(135deg, #2D5048 0%, #1A3530 100%)'
   },
   sectionLabelLight: {
@@ -1283,36 +1311,36 @@ const styles = {
   },
   sectionTitleLight: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 'clamp(36px, 5vw, 48px)',
+    fontSize: 'clamp(32px, 5vw, 44px)',
     fontWeight: '500',
     color: 'white',
-    marginBottom: '60px',
+    marginBottom: '50px',
     textAlign: 'center'
   },
   testimonialsGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '32px'
+    gap: '24px'
   },
   testimonialCard: {
     background: 'rgba(255,255,255,0.05)',
-    padding: '40px',
-    borderRadius: '20px',
+    padding: '36px',
+    borderRadius: '16px',
     backdropFilter: 'blur(10px)'
   },
   testimonialQuote: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: '64px',
+    fontSize: '56px',
     color: '#5B8A72',
     lineHeight: '0.5',
-    marginBottom: '20px'
+    marginBottom: '16px'
   },
   testimonialText: {
-    fontSize: '16px',
+    fontSize: '15px',
     color: 'rgba(255,255,255,0.9)',
     lineHeight: '1.8',
     fontStyle: 'italic',
-    marginBottom: '20px'
+    marginBottom: '16px'
   },
   testimonialAuthor: {
     fontSize: '14px',
@@ -1322,63 +1350,62 @@ const styles = {
   
   // Locations Section
   locationsSection: {
-    padding: '120px 32px',
+    padding: '100px 32px',
     background: '#FFFDF9'
   },
-  locationsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: '20px',
-    marginBottom: '40px'
+  locationsGridSingle: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '32px'
   },
-  locationCard: {
+  locationCardLarge: {
     background: 'white',
-    padding: '32px',
+    padding: '40px 60px',
     borderRadius: '16px',
     boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)',
-    cursor: 'pointer',
-    border: '1px solid rgba(45, 80, 72, 0.08)'
+    border: '1px solid rgba(45, 80, 72, 0.08)',
+    textAlign: 'center'
   },
   locationCity: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: '24px',
+    fontSize: '28px',
     fontWeight: '600',
     color: '#2D3B35',
-    marginBottom: '8px',
-    transition: 'color 0.3s ease'
+    marginBottom: '8px'
   },
   locationAddress: {
-    fontSize: '14px',
+    fontSize: '16px',
     color: '#5A6B62',
-    marginBottom: '4px',
-    transition: 'color 0.3s ease'
+    marginBottom: '8px'
   },
   locationPhone: {
-    fontSize: '14px',
+    fontSize: '16px',
     color: '#5B8A72',
-    fontWeight: '600',
-    transition: 'color 0.3s ease'
+    fontWeight: '600'
   },
   telehealthBanner: {
     display: 'flex',
     alignItems: 'center',
     gap: '24px',
-    background: 'linear-gradient(135deg, rgba(91, 138, 114, 0.1) 0%, rgba(168, 198, 182, 0.1) 100%)',
-    padding: '32px 40px',
+    background: 'linear-gradient(135deg, rgba(91, 138, 114, 0.08) 0%, rgba(168, 198, 182, 0.08) 100%)',
+    padding: '28px 36px',
     borderRadius: '16px',
-    border: '1px solid rgba(91, 138, 114, 0.2)',
-    flexWrap: 'wrap'
+    border: '1px solid rgba(91, 138, 114, 0.15)',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
   },
-  telehealthIcon: { fontSize: '40px' },
+  telehealthIconWrapper: {
+    color: '#5B8A72'
+  },
   telehealthTitle: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: '22px',
+    fontSize: '20px',
     fontWeight: '600',
     color: '#2D3B35',
     marginBottom: '4px'
   },
   telehealthText: {
-    fontSize: '15px',
+    fontSize: '14px',
     color: '#5A6B62'
   },
   telehealthCta: {
@@ -1396,20 +1423,20 @@ const styles = {
   
   // Contact Section
   contactSection: {
-    padding: '120px 32px',
+    padding: '100px 32px',
     background: 'linear-gradient(180deg, #2D5048 0%, #1A3530 100%)'
   },
   contactContainer: {
-    maxWidth: '1200px',
+    maxWidth: '1100px',
     margin: '0 auto',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gap: '80px'
+    gap: '60px'
   },
   contactInfo: {},
   contactTitle: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 'clamp(32px, 5vw, 44px)',
+    fontSize: 'clamp(28px, 4vw, 40px)',
     fontWeight: '500',
     color: 'white',
     marginBottom: '20px'
@@ -1418,13 +1445,13 @@ const styles = {
     fontSize: '16px',
     color: 'rgba(255,255,255,0.8)',
     lineHeight: '1.8',
-    marginBottom: '40px'
+    marginBottom: '36px'
   },
   contactDetails: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '24px',
-    marginBottom: '40px'
+    gap: '20px',
+    marginBottom: '36px'
   },
   contactItem: {
     display: 'flex',
@@ -1433,25 +1460,25 @@ const styles = {
     textDecoration: 'none',
     cursor: 'pointer'
   },
-  contactIcon: { fontSize: '24px' },
+  contactIcon: { fontSize: '20px' },
   contactLabel: {
-    fontSize: '13px',
+    fontSize: '12px',
     color: 'rgba(255,255,255,0.6)',
     marginBottom: '2px'
   },
   contactValue: {
-    fontSize: '16px',
+    fontSize: '15px',
     color: 'white',
     fontWeight: '500'
   },
   emergencyBox: {
     background: 'rgba(255,255,255,0.08)',
-    padding: '24px',
+    padding: '20px',
     borderRadius: '12px',
     borderLeft: '3px solid #A8C6B6'
   },
   emergencyTitle: {
-    fontSize: '16px',
+    fontSize: '15px',
     color: '#A8C6B6',
     fontWeight: '600',
     marginBottom: '8px'
@@ -1463,13 +1490,13 @@ const styles = {
   },
   contactForm: {
     background: 'white',
-    padding: '48px',
-    borderRadius: '24px',
-    boxShadow: '0 30px 60px rgba(0,0,0,0.2)'
+    padding: '40px',
+    borderRadius: '20px',
+    boxShadow: '0 25px 50px rgba(0,0,0,0.2)'
   },
   formTitle: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: '28px',
+    fontSize: '26px',
     fontWeight: '600',
     color: '#2D3B35',
     marginBottom: '8px'
@@ -1477,48 +1504,53 @@ const styles = {
   formNote: {
     fontSize: '13px',
     color: '#5A6B62',
-    marginBottom: '32px'
+    marginBottom: '28px'
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px'
+    gap: '18px'
+  },
+  formRow: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '16px'
   },
   formGroup: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px'
+    gap: '6px'
   },
   formLabel: {
-    fontSize: '14px',
+    fontSize: '13px',
     fontWeight: '600',
     color: '#2D3B35'
   },
   formInput: {
-    padding: '14px 18px',
-    borderRadius: '10px',
+    padding: '12px 16px',
+    borderRadius: '8px',
     border: '1px solid rgba(45, 80, 72, 0.2)',
     fontSize: '15px',
     fontFamily: "'Outfit', sans-serif",
     outline: 'none'
   },
   formTextarea: {
-    padding: '14px 18px',
-    borderRadius: '10px',
+    padding: '12px 16px',
+    borderRadius: '8px',
     border: '1px solid rgba(45, 80, 72, 0.2)',
     fontSize: '15px',
     fontFamily: "'Outfit', sans-serif",
     resize: 'vertical',
-    minHeight: '120px',
+    minHeight: '100px',
     outline: 'none'
   },
   submitButton: {
     background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
     color: 'white',
-    padding: '16px 32px',
+    padding: '14px 28px',
     borderRadius: '30px',
     border: 'none',
-    fontSize: '16px',
+    fontSize: '15px',
     fontWeight: '600',
     fontFamily: "'Outfit', sans-serif",
     cursor: 'pointer',
@@ -1526,59 +1558,58 @@ const styles = {
   },
   successMessage: {
     textAlign: 'center',
-    padding: '60px 20px'
+    padding: '50px 20px'
   },
   successIcon: {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '60px',
-    height: '60px',
+    width: '56px',
+    height: '56px',
     borderRadius: '50%',
     background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
     color: 'white',
-    fontSize: '28px',
-    marginBottom: '20px'
+    fontSize: '24px',
+    marginBottom: '16px'
   },
   errorMessage: {
     textAlign: 'center',
-    padding: '60px 20px'
+    padding: '50px 20px'
   },
   errorIcon: {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '60px',
-    height: '60px',
+    width: '56px',
+    height: '56px',
     borderRadius: '50%',
     background: '#e74c3c',
     color: 'white',
-    fontSize: '28px',
-    marginBottom: '20px'
+    fontSize: '24px',
+    marginBottom: '16px'
   },
   
   // Footer
   footer: {
     background: '#1A2E28',
-    padding: '80px 32px 40px'
+    padding: '70px 32px 36px'
   },
   footerContainer: {
-    maxWidth: '1200px',
+    maxWidth: '1100px',
     margin: '0 auto'
   },
   footerMain: {
     display: 'flex',
     justifyContent: 'space-between',
-    marginBottom: '60px'
+    marginBottom: '50px'
   },
   footerBrand: {},
-  footerLogo: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: '24px',
-    fontWeight: '600',
-    color: 'white',
-    display: 'block',
-    marginBottom: '8px'
+  footerLogoWrapper: {
+    marginBottom: '12px'
+  },
+  footerLogoImage: {
+    height: '50px',
+    width: 'auto'
   },
   footerTagline: {
     fontSize: '13px',
@@ -1586,15 +1617,15 @@ const styles = {
   },
   footerLinks: {
     display: 'flex',
-    gap: '80px'
+    gap: '60px'
   },
   footerColumn: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '12px'
+    gap: '10px'
   },
   footerHeading: {
-    fontSize: '14px',
+    fontSize: '13px',
     fontWeight: '600',
     color: '#A8C6B6',
     marginBottom: '8px'
@@ -1610,8 +1641,13 @@ const styles = {
     textAlign: 'left',
     padding: 0
   },
+  footerAddress: {
+    fontSize: '14px',
+    color: 'rgba(255,255,255,0.7)',
+    lineHeight: '1.6'
+  },
   footerBottom: {
-    paddingTop: '32px',
+    paddingTop: '28px',
     borderTop: '1px solid rgba(255,255,255,0.1)'
   },
   footerCopyright: {
@@ -1622,7 +1658,7 @@ const styles = {
   
   // Resources Page Styles
   resourceSection: {
-    padding: '100px 32px',
+    padding: '80px 32px',
     background: '#FFFDF9'
   },
   faqContainer: {
@@ -1632,21 +1668,22 @@ const styles = {
   faqItem: {
     background: 'white',
     borderRadius: '12px',
-    marginBottom: '16px',
+    marginBottom: '12px',
     overflow: 'hidden',
     boxShadow: '0 2px 10px rgba(45, 80, 72, 0.05)',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    border: '1px solid rgba(45, 80, 72, 0.06)'
   },
   faqQuestion: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '24px',
+    padding: '20px 24px',
     gap: '16px'
   },
   faqQuestionText: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: '20px',
+    fontSize: '18px',
     fontWeight: '600',
     color: '#2D3B35',
     margin: 0
@@ -1657,58 +1694,64 @@ const styles = {
     transition: 'transform 0.3s ease'
   },
   faqAnswer: {
-    padding: '0 24px 24px',
+    padding: '0 24px 20px',
     color: '#5A6B62',
-    lineHeight: '1.7'
+    lineHeight: '1.7',
+    fontSize: '15px'
   },
   insuranceGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '16px',
-    marginBottom: '40px'
+    gap: '12px',
+    marginBottom: '32px'
   },
   insuranceCard: {
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
+    gap: '10px',
     background: 'white',
-    padding: '20px 24px',
-    borderRadius: '12px',
-    boxShadow: '0 2px 10px rgba(45, 80, 72, 0.05)'
+    padding: '16px 20px',
+    borderRadius: '10px',
+    boxShadow: '0 2px 10px rgba(45, 80, 72, 0.05)',
+    border: '1px solid rgba(45, 80, 72, 0.06)'
   },
   insuranceIcon: {
     color: '#5B8A72',
     fontWeight: '700',
-    fontSize: '18px'
+    fontSize: '16px'
   },
   insuranceName: {
-    fontSize: '16px',
+    fontSize: '15px',
     color: '#2D3B35',
     fontWeight: '500'
   },
   insuranceNote: {
     background: 'white',
-    padding: '32px',
-    borderRadius: '16px',
+    padding: '28px',
+    borderRadius: '14px',
     boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)',
     lineHeight: '1.7',
-    color: '#5A6B62'
+    color: '#5A6B62',
+    fontSize: '15px',
+    border: '1px solid rgba(45, 80, 72, 0.06)'
   },
   rightsContainer: {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '32px'
+    gap: '24px'
   },
   rightsCard: {
     background: 'white',
-    padding: '40px',
-    borderRadius: '16px',
-    boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)'
+    padding: '32px',
+    borderRadius: '14px',
+    boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)',
+    border: '1px solid rgba(45, 80, 72, 0.06)'
   },
   rightsList: {
     paddingLeft: '20px',
     lineHeight: '2',
-    color: '#5A6B62'
+    color: '#5A6B62',
+    fontSize: '15px'
   },
   privacyContainer: {
     maxWidth: '800px',
@@ -1716,36 +1759,40 @@ const styles = {
   },
   privacySection: {
     background: 'white',
-    padding: '32px',
-    borderRadius: '16px',
-    marginBottom: '24px',
-    boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)'
+    padding: '28px',
+    borderRadius: '14px',
+    marginBottom: '20px',
+    boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)',
+    border: '1px solid rgba(45, 80, 72, 0.06)',
+    fontSize: '15px',
+    lineHeight: '1.7',
+    color: '#5A6B62'
   },
   resourceCtaSection: {
-    padding: '80px 32px',
+    padding: '70px 32px',
     background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
     textAlign: 'center'
   },
   resourceCtaTitle: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 'clamp(32px, 5vw, 44px)',
+    fontSize: 'clamp(28px, 4vw, 40px)',
     fontWeight: '500',
     color: 'white',
     marginBottom: '16px'
   },
   resourceCtaText: {
-    fontSize: '18px',
+    fontSize: '17px',
     color: 'rgba(255,255,255,0.9)',
-    marginBottom: '32px'
+    marginBottom: '28px'
   },
   resourceCtaButton: {
     background: 'white',
     color: '#2D5048',
-    padding: '18px 40px',
+    padding: '16px 36px',
     borderRadius: '40px',
     border: 'none',
     cursor: 'pointer',
-    fontSize: '16px',
+    fontSize: '15px',
     fontWeight: '600',
     fontFamily: "'Outfit', sans-serif"
   }
