@@ -17,9 +17,9 @@ export const config = {
   // ----------------------
   // CONTACT INFORMATION
   // ----------------------
-  phone: "(828) 333-1285",
-  phoneRaw: "8283331285",
-  email: "contact@peakwellnesscenters.com",
+  phone: "(828) 555-1234",
+  phoneRaw: "828551234",
+  email: "hello@kwimbish@peakwellnesscenters.org",
   
   // ----------------------
   // FORM SETUP (Formspree)
@@ -27,9 +27,9 @@ export const config = {
   // 1. Go to https://formspree.io and create a free account
   // 2. Click "New Form" and give it a name like "Peak Wellness Contact"
   // 3. Copy the form ID (the part after /f/ in your form URL)
-  // 4. Paste it below, replacing YOUR_FORMSPREE_ID
+  // 4. Paste it below, replacing mnjpqjvq
   // 5. When someone submits the form, you'll get an email!
-  formspreeId: "YOUR_FORMSPREE_ID",
+  formspreeId: "mnjpqjvq",
   
   // ----------------------
   // ADDRESS
@@ -90,7 +90,7 @@ export const config = {
     {
       city: "Asheville",
       address: "38 Rosscraggon Road",
-      phone: "(828) 333-1285"
+      phone: "(828) 555-1234"
     }
   ],
   
@@ -195,7 +195,7 @@ export const config = {
   faqItems: [
     {
       question: "How do I schedule an appointment?",
-      answer: "You can schedule an appointment by calling our office at (828) 333-1285, sending us an email, or filling out our contact form. We offer same-week appointments and will get back to you within 24 hours."
+      answer: "You can schedule an appointment by calling our office at (828) 555-1234, sending us an email, or filling out our contact form. We offer same-week appointments and will get back to you within 24 hours."
     },
     {
       question: "Do you accept insurance?",
