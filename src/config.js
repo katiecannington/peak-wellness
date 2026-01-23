@@ -19,7 +19,7 @@ export const config = {
   // ----------------------
   phone: "(828) 555-1234",
   phoneRaw: "828551234",
-  email: "hello@kwimbish@peakwellnesscenters.org",
+  email: "hello@peakwellnesscenters.org",
   
   // ----------------------
   // FORM SETUP (Formspree)
