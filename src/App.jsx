@@ -254,6 +254,26 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Photo Gallery Section */}
+      {config.stockPhotos && config.stockPhotos.length > 0 && (
+        <section style={styles.photoGallerySection}>
+          <div style={styles.photoGalleryGrid}>
+            {config.stockPhotos.slice(0, 6).map((photo, index) => (
+              <div key={index} style={styles.photoGalleryItem}>
+                <img 
+                  src={photo.src} 
+                  alt={photo.alt}
+                  style={styles.photoGalleryImage}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Services Preview */}
       <section style={styles.servicesSection}>
         <div style={styles.sectionContainer}>
@@ -276,23 +296,25 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section style={styles.testimonialsSection}>
-        <div style={styles.sectionContainer}>
-          <span style={styles.sectionLabelLight}>Testimonials</span>
-          <h2 style={styles.sectionTitleLight}>What Our Clients Are Saying</h2>
-          
-          <div className="testimonials-grid" style={styles.testimonialsGrid}>
-            {config.testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial-card" style={styles.testimonialCard}>
-                <div style={styles.testimonialQuote}>"</div>
-                <p style={styles.testimonialText}>{testimonial.quote}</p>
-                <p style={styles.testimonialAuthor}>{testimonial.author}</p>
-              </div>
-            ))}
+      {/* Testimonials - only shown when showTestimonials is true */}
+      {config.showTestimonials && config.testimonials.length > 0 && (
+        <section style={styles.testimonialsSection}>
+          <div style={styles.sectionContainer}>
+            <span style={styles.sectionLabelLight}>Testimonials</span>
+            <h2 style={styles.sectionTitleLight}>What Our Clients Are Saying</h2>
+            
+            <div className="testimonials-grid" style={styles.testimonialsGrid}>
+              {config.testimonials.map((testimonial, index) => (
+                <div key={index} className="testimonial-card" style={styles.testimonialCard}>
+                  <div style={styles.testimonialQuote}>"</div>
+                  <p style={styles.testimonialText}>{testimonial.quote}</p>
+                  <p style={styles.testimonialAuthor}>{testimonial.author}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section style={styles.ctaSection}>
@@ -917,6 +939,10 @@ const App = () => {
           .telehealth-banner button {
             margin-left: 0 !important;
           }
+          
+          .photo-gallery-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
         }
       `}</style>
 
@@ -1219,6 +1245,30 @@ const styles = {
     fontSize: '14px',
     color: 'rgba(255,255,255,0.7)',
     fontWeight: '500'
+  },
+
+  // Photo Gallery Section
+  photoGallerySection: {
+    padding: '0',
+    background: '#FFFDF9',
+    overflow: 'hidden'
+  },
+  photoGalleryGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(6, 1fr)',
+    gap: '4px'
+  },
+  photoGalleryItem: {
+    aspectRatio: '1',
+    overflow: 'hidden',
+    background: 'linear-gradient(135deg, #A8C6B6 0%, #5B8A72 100%)'
+  },
+  photoGalleryImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    transition: 'transform 0.3s ease',
+    display: 'block'
   },
 
   // Services Section
