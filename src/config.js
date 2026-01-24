@@ -215,7 +215,7 @@ export const config = {
     },
     {
       question: "Do you offer telehealth services?",
-      answer: "Yes! We offer secure video sessions for clients in North Carolina, South Carolina, Tennessee, and Florida. Telehealth provides the same quality care with added convenience."
+      answer: "Yes! We offer secure video sessions for clients in Tennessee and Louisiana. Telehealth provides the same quality care with added convenience."
     },
     {
       question: "What is your cancellation policy?",
