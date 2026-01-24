@@ -254,26 +254,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Photo Gallery Section */}
-      {config.stockPhotos && config.stockPhotos.length > 0 && (
-        <section style={styles.photoGallerySection}>
-          <div style={styles.photoGalleryGrid}>
-            {config.stockPhotos.slice(0, 6).map((photo, index) => (
-              <div key={index} style={styles.photoGalleryItem}>
-                <img 
-                  src={photo.src} 
-                  alt={photo.alt}
-                  style={styles.photoGalleryImage}
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
       {/* Services Preview */}
       <section style={styles.servicesSection}>
         <div style={styles.sectionContainer}>
@@ -281,15 +261,26 @@ const HomePage = () => {
           <h2 style={styles.sectionTitle}>Comprehensive Care for Your Journey</h2>
           <p style={styles.sectionSubtitle}>We offer a range of therapeutic services tailored to meet you where you are.</p>
           
-          <div className="services-grid" style={styles.servicesGrid}>
+          <div className="services-grid-5" style={styles.servicesGrid5}>
             {config.services.map((service, index) => (
-              <div key={index} className="service-card" style={styles.serviceCard}>
-                <div style={styles.serviceIconWrapper}>
-                  {Icons[service.icon] || Icons.person}
+              <div key={index} className="service-card-photo" style={styles.serviceCardPhoto}>
+                <div style={styles.serviceCardImageWrapper}>
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    style={styles.serviceCardImage}
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                  />
+                  <div style={styles.serviceCardImageOverlay}></div>
                 </div>
-                <h3 style={styles.serviceTitle}>{service.title}</h3>
-                <p style={styles.serviceDescription}>{service.description}</p>
-                <Link to="/contact" style={styles.serviceLink}>Get Started →</Link>
+                <div style={styles.serviceCardContent}>
+                  <div style={styles.serviceIconWrapper}>
+                    {Icons[service.icon] || Icons.person}
+                  </div>
+                  <h3 style={styles.serviceTitle}>{service.title}</h3>
+                  <p style={styles.serviceDescription}>{service.description}</p>
+                  <Link to="/contact" style={styles.serviceLink}>Get Started →</Link>
+                </div>
               </div>
             ))}
           </div>
@@ -714,30 +705,44 @@ const ResourcesPage = () => {
       {/* Insurance Section */}
       <section id="insurance" style={{ ...styles.resourceSection, background: 'linear-gradient(180deg, #F7F5F0 0%, #FFFDF9 100%)' }}>
         <div style={styles.sectionContainer}>
-          <h2 style={styles.resourceSectionTitle}>Insurance Information</h2>
-          <p style={styles.resourceSectionSubtitle}>We work with many insurance providers to make counseling accessible.</p>
+          <h2 style={styles.resourceSectionTitle}>Insurance & Payment</h2>
           
-          <div className="insurance-grid" style={styles.insuranceGrid}>
-            {config.insuranceProviders.map((provider, index) => (
-              <div key={index} style={styles.insuranceCard}>
-                <span style={styles.insuranceIcon}>✓</span>
-                <span style={styles.insuranceName}>{provider}</span>
+          {config.showInsuranceProviders ? (
+            <>
+              <p style={styles.resourceSectionSubtitle}>We work with many insurance providers to make counseling accessible.</p>
+              <div className="insurance-grid" style={styles.insuranceGrid}>
+                {config.insuranceProviders.map((provider, index) => (
+                  <div key={index} style={styles.insuranceCard}>
+                    <span style={styles.insuranceIcon}>✓</span>
+                    <span style={styles.insuranceName}>{provider}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          
-          <div style={styles.insuranceNote}>
-            <h4>Verify Your Coverage</h4>
-            <p>
-              Coverage varies by plan. We recommend contacting your insurance provider or 
-              calling our office at <a href={`tel:${config.phoneRaw}`} style={styles.inlineLink}>{config.phone}</a> to 
-              verify your specific benefits before your first appointment.
-            </p>
-            <p style={{ marginTop: '16px', fontStyle: 'italic' }}>
-              <strong>Note:</strong> Marriage counseling is typically not covered by insurance 
-              as it usually doesn't meet medical necessity requirements.
-            </p>
-          </div>
+              <div style={styles.insuranceNote}>
+                <h4>Verify Your Coverage</h4>
+                <p>
+                  Coverage varies by plan. We recommend contacting your insurance provider or 
+                  calling our office at <a href={`tel:${config.phoneRaw}`} style={styles.inlineLink}>{config.phone}</a> to 
+                  verify your specific benefits before your first appointment.
+                </p>
+                <p style={{ marginTop: '16px', fontStyle: 'italic' }}>
+                  <strong>Note:</strong> Marriage counseling is typically not covered by insurance 
+                  as it usually doesn't meet medical necessity requirements.
+                </p>
+              </div>
+            </>
+          ) : (
+            <div style={styles.insuranceNote}>
+              <h4>Payment Information</h4>
+              <p>
+                {config.insuranceMessage || "We are currently working towards accepting insurance. In the meantime, we offer competitive self-pay rates."}
+              </p>
+              <p style={{ marginTop: '16px' }}>
+                Contact us at <a href={`tel:${config.phoneRaw}`} style={styles.inlineLink}>{config.phone}</a> or{' '}
+                <a href={`mailto:${config.email}`} style={styles.inlineLink}>{config.email}</a> to discuss payment options and scheduling.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -859,6 +864,10 @@ const App = () => {
         .service-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .service-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(45, 80, 72, 0.15); }
         
+        .service-card-photo { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .service-card-photo:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(45, 80, 72, 0.15); }
+        .service-card-photo:hover img { transform: scale(1.05); }
+        
         .team-card { transition: all 0.3s ease; }
         .team-card:hover { transform: scale(1.02); }
         
@@ -885,7 +894,7 @@ const App = () => {
         
         /* MOBILE STYLES */
         @media (max-width: 1024px) {
-          .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .services-grid, .services-grid-5 { grid-template-columns: repeat(2, 1fr) !important; }
           .team-grid, .team-grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonials-grid { grid-template-columns: 1fr !important; }
           .insurance-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -896,7 +905,7 @@ const App = () => {
           .desktop-nav { display: none !important; }
           .mobile-toggle { display: flex !important; }
           
-          .services-grid { grid-template-columns: 1fr !important; }
+          .services-grid, .services-grid-5 { grid-template-columns: 1fr !important; }
           .team-grid, .team-grid-3 { grid-template-columns: 1fr !important; }
           .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
@@ -1300,6 +1309,45 @@ const styles = {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '24px'
+  },
+  // New 5-item grid for services with photos
+  servicesGrid5: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '24px',
+    maxWidth: '1100px',
+    margin: '0 auto'
+  },
+  serviceCardPhoto: {
+    background: 'white',
+    borderRadius: '16px',
+    boxShadow: '0 4px 20px rgba(45, 80, 72, 0.08)',
+    border: '1px solid rgba(45, 80, 72, 0.06)',
+    overflow: 'hidden',
+    transition: 'all 0.3s ease'
+  },
+  serviceCardImageWrapper: {
+    position: 'relative',
+    height: '180px',
+    overflow: 'hidden',
+    background: 'linear-gradient(135deg, #A8C6B6 0%, #5B8A72 100%)'
+  },
+  serviceCardImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    transition: 'transform 0.4s ease'
+  },
+  serviceCardImageOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '60px',
+    background: 'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)'
+  },
+  serviceCardContent: {
+    padding: '24px'
   },
   serviceCard: {
     background: 'white',
