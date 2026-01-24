@@ -12,14 +12,14 @@ export const config = {
   businessName: "Peak Wellness Centers PLLC",
   tagline: "Mind, Body, and Spirit",
   heroHeadline: "Caring for the Whole Person",
-  heroSubhead: "Faith-based counseling designed for real life. Evidence-based, compassionate, and centered on lasting change.",
+  heroSubhead: "Christian counseling designed for real life. Evidence-based, compassionate, and centered on lasting change.",
   
   // ----------------------
   // CONTACT INFORMATION
   // ----------------------
-  phone: "(828) 555-1234",
-  phoneRaw: "828551234",
-  email: "hello@peakwellnesscenters.org",
+  phone: "(828) 333-1285",
+  phoneRaw: "8283331285",
+  email: "contact@peakwellnesscenters.com",
   
   // ----------------------
   // FORM SETUP (Formspree)
@@ -27,9 +27,9 @@ export const config = {
   // 1. Go to https://formspree.io and create a free account
   // 2. Click "New Form" and give it a name like "Peak Wellness Contact"
   // 3. Copy the form ID (the part after /f/ in your form URL)
-  // 4. Paste it below, replacing mnjpqjvq
+  // 4. Paste it below, replacing YOUR_FORMSPREE_ID
   // 5. When someone submits the form, you'll get an email!
-  formspreeId: "mnjpqjvq",
+  formspreeId: "YOUR_FORMSPREE_ID",
   
   // ----------------------
   // ADDRESS
@@ -50,11 +50,12 @@ export const config = {
   // ----------------------
   // ABOUT SECTION
   // ----------------------
-  aboutTitle: "Our Commitment to Faith-Integrated Counseling",
+  aboutTitle: "Our Commitment to Christ-Centered Counseling",
   aboutText: [
     "Peak Wellness Centers PLLC was built on Christian compassion and clinical excellence.",
     "We believe every person deserves access to care that honors both professional integrity and spiritual truth.",
-    "Our counselors combine evidence-based methods with faith-centered wisdom to help individuals, couples, and families find hope, healing, and renewed purpose."
+    "As a Christian-based counseling practice, we serve clients from all walks of life, providing support with dignity and respect.",
+    "Our counselors combine evidence-based methods with Christ-centered wisdom to help individuals, couples, and families find hope, healing, and renewed purpose."
   ],
   
   // ----------------------
@@ -64,8 +65,8 @@ export const config = {
   // Use the exact filename you uploaded (e.g., "kevin_picture.png")
   team: [
     {
-      name: "Rev. Kevin Wimbish, MS, LMFT",
-      role: "Licensed Counselor",
+      name: "Kevin Wimbush",
+      role: "Founder",
       specialty: "Marriage & Family Therapy",
       image: "/kevin_picture.png"
     },
@@ -90,7 +91,7 @@ export const config = {
     {
       city: "Asheville",
       address: "38 Rosscraggon Road",
-      phone: "(828) 555-1234"
+      phone: "(828) 333-1285"
     }
   ],
   
@@ -100,44 +101,43 @@ export const config = {
   telehealthStates: ["TN", "LA"],
   
   // ----------------------
-  // SERVICES (using cleaner icons)
+  // SERVICES
   // ----------------------
   services: [
     {
       title: "Individual Therapy",
       description: "Navigate anxiety, depression, life transitions, and personal growth with compassionate one-on-one support.",
       icon: "person",
-      details: ["Anxiety & Depression", "Life Transitions", "Grief & Loss", "Personal Growth"]
+      details: ["Anxiety & Depression", "Life Transitions", "Grief & Loss", "Personal Growth"],
+      image: "/photo1.png"
     },
     {
       title: "Marriage Counseling",
       description: "Strengthen your relationship through improved communication, conflict resolution, and deeper connection.",
       icon: "heart",
-      details: ["Communication Skills", "Conflict Resolution", "Premarital Counseling", "Relationship Restoration"]
-    },
-    {
-      title: "Trauma & Addiction Recovery",
-      description: "Find healing from past wounds and break free from cycles of addiction with faith-centered support.",
-      icon: "shield",
-      details: ["Trauma Recovery", "Addiction Support", "PTSD Treatment", "Healing & Restoration"]
+      details: ["Communication Skills", "Conflict Resolution", "Premarital Counseling", "Relationship Restoration"],
+      image: "/photo2.png"
     },
     {
       title: "Family & Teen Support",
       description: "Build healthier family dynamics and support your teens through life's challenges.",
       icon: "family",
-      details: ["Parenting Support", "Teen Counseling", "Family Dynamics", "Young Adult Therapy"]
+      details: ["Parenting Support", "Teen Counseling", "Family Dynamics", "Young Adult Therapy"],
+      image: "/photo3.png"
     },
     {
       title: "Faith & Spiritual Guidance",
       description: "Integrate your faith journey with mental health support for whole-person healing.",
       icon: "cross",
-      details: ["Spiritual Direction", "Faith Integration", "Biblical Counseling", "Purpose & Meaning"]
+      details: ["Spiritual Direction", "Faith Integration", "Biblical Counseling", "Purpose & Meaning"],
+      image: "/photo4.png"
     },
     {
       title: "Telehealth Sessions",
-      description: "Access quality care from anywhere in LA or TN through secure video sessions.",
+      description: "Access quality care from anywhere in TN or LA through secure video sessions.",
       icon: "video",
-      details: ["Secure Platform", "Flexible Scheduling", "Same Quality Care", "Multi-State Licensed"]
+      details: ["Secure Platform", "Flexible Scheduling", "Same Quality Care", "Multi-State Licensed"],
+      image: "/photo5.png"
     }
   ],
   
@@ -146,12 +146,12 @@ export const config = {
   // ----------------------
   benefits: [
     {
-      title: "Faith-Driven Care",
+      title: "Christ-Centered Care",
       description: "Our clinicians integrate biblical truth with proven therapy approaches—no need to choose between your faith and your mental health."
     },
     {
       title: "Experienced Clinicians",
-      description: "Licensed professionals with years of experience in trauma, marriage, and family therapy; trained to serve from a Christian worldview."
+      description: "Licensed professionals with years of experience in marriage and family therapy; trained to serve from a Christian worldview."
     },
     {
       title: "Accessible & Flexible",
@@ -160,22 +160,15 @@ export const config = {
   ],
   
   // ----------------------
-  // TESTIMONIALS
+  // TESTIMONIALS (hidden for now - uncomment when ready)
   // ----------------------
   testimonials: [
-    {
-      quote: "Peak Wellness gave us tools to rebuild our marriage while growing stronger in our faith.",
-      author: "— Emily & Mark T."
-    },
-    {
-      quote: "I felt understood, not judged, and left each session with hope.",
-      author: "— J.S."
-    },
-    {
-      quote: "The combination of professional guidance and prayer changed everything.",
-      author: "— Carol S."
-    }
+    // {
+    //   quote: "Peak Wellness gave us tools to rebuild our marriage while growing stronger in our faith.",
+    //   author: "— Emily & Mark T."
+    // },
   ],
+  showTestimonials: false, // Set to true when you have testimonials to show
   
   // ----------------------
   // INSURANCE PROVIDERS
@@ -195,11 +188,11 @@ export const config = {
   faqItems: [
     {
       question: "How do I schedule an appointment?",
-      answer: "You can schedule an appointment by calling our office at (828) 555-1234, sending us an email, or filling out our contact form. We offer same-week appointments and will get back to you within 24 hours."
+      answer: "You can schedule an appointment by calling our office at (828) 333-1285, sending us an email, or filling out our contact form. We offer same-week appointments and will get back to you within 24 hours."
     },
     {
       question: "Do you accept insurance?",
-      answer: "Yes! We are in-network with several major insurance providers including Blue Cross Blue Shield, Aetna, Cigna, United Healthcare, Medicare, and Medicaid. Contact us to verify your specific coverage."
+      answer: "We will be working towards accepting insurance in TN soon. Contact us to discuss payment options and verify coverage availability."
     },
     {
       question: "What should I expect at my first appointment?",
@@ -207,11 +200,7 @@ export const config = {
     },
     {
       question: "How long are therapy sessions?",
-      answer: "Individual therapy sessions are typically 50-55 minutes. Couples and family sessions may be 60-90 minutes depending on your needs and what your counselor recommends."
-    },
-    {
-      question: "Is marriage counseling covered by insurance?",
-      answer: "Marriage counseling is typically not reimbursable by insurance because it usually doesn't meet requirements for medical necessity. Please contact our office if you have questions about this."
+      answer: "Therapy sessions are typically 50-55 minutes."
     },
     {
       question: "Do you offer telehealth services?",
@@ -227,8 +216,31 @@ export const config = {
     },
     {
       question: "How is faith integrated into counseling?",
-      answer: "Our counselors integrate biblical truth with evidence-based therapy approaches. We honor your faith journey while providing professional clinical care. You don't have to choose between your faith and your mental health."
+      answer: "Our counselors integrate biblical truth with evidence-based therapy approaches. We honor your faith journey while providing professional clinical care. As a Christian-based practice, we also welcome and serve clients from all backgrounds with dignity and respect."
+    },
+    {
+      question: "Do I have to be a Christian to receive services?",
+      answer: "No. As a Christian-based counseling practice, we serve clients from all walks of life, providing support with dignity and respect. Our approach is rooted in Christian values, but we welcome everyone."
     }
+  ],
+  
+  // ----------------------
+  // STOCK PHOTOS FOR HOMEPAGE
+  // ----------------------
+  // Upload these to the /public folder:
+  // photo1.png - person smiling
+  // photo2.png - couple
+  // photo3.png - family or teen
+  // photo4.png - person in reflection/prayer
+  // photo5.png - person talking with counselor
+  // photo6.png - person showing emotion (crying)
+  stockPhotos: [
+    { src: "/photo1.png", alt: "Individual finding hope through counseling" },
+    { src: "/photo2.png", alt: "Couple strengthening their relationship" },
+    { src: "/photo3.png", alt: "Family support and teen counseling" },
+    { src: "/photo4.png", alt: "Faith and spiritual guidance" },
+    { src: "/photo5.png", alt: "Professional counseling session" },
+    { src: "/photo6.png", alt: "Emotional healing and support" }
   ],
   
   // ----------------------
