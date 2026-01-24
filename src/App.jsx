@@ -330,18 +330,26 @@ const ServicesPage = () => {
       <section style={styles.pageHeader}>
         <span style={styles.sectionLabel}>What We Offer</span>
         <h1 style={styles.pageTitle}>Our Services</h1>
-        <p style={styles.pageSubtitle}>Comprehensive, faith-integrated counseling tailored to your needs.</p>
+        <p style={styles.pageSubtitle}>Comprehensive, Christian counseling tailored to your needs.</p>
       </section>
 
       <section style={styles.servicesPageSection}>
         <div style={styles.sectionContainer}>
-          <div className="services-grid" style={styles.servicesGridLarge}>
+          <div style={styles.servicesListLarge}>
             {config.services.map((service, index) => (
-              <div key={index} className="service-card" style={styles.serviceCardLarge}>
-                <div style={styles.serviceIconWrapperLarge}>
-                  {Icons[service.icon] || Icons.person}
+              <div key={index} className="service-card-large" style={styles.serviceCardWithPhoto}>
+                <div style={styles.serviceCardPhotoLeft}>
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    style={styles.serviceCardPhotoImg}
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                  />
                 </div>
-                <div>
+                <div style={styles.serviceCardRightContent}>
+                  <div style={styles.serviceIconWrapperLarge}>
+                    {Icons[service.icon] || Icons.person}
+                  </div>
                   <h3 style={styles.serviceTitleLarge}>{service.title}</h3>
                   <p style={styles.serviceDescriptionLarge}>{service.description}</p>
                   <div style={styles.serviceDetails}>
@@ -359,7 +367,7 @@ const ServicesPage = () => {
       {/* Telehealth Banner */}
       <section style={{ padding: '60px 32px', background: '#FFFDF9' }}>
         <div style={styles.sectionContainer}>
-          <div style={styles.telehealthBanner}>
+          <div className="telehealth-banner" style={styles.telehealthBanner}>
             <div style={styles.telehealthIconWrapper}>
               {Icons.video}
             </div>
@@ -868,6 +876,10 @@ const App = () => {
         .service-card-photo:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(45, 80, 72, 0.15); }
         .service-card-photo:hover img { transform: scale(1.05); }
         
+        .service-card-large { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .service-card-large:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(45, 80, 72, 0.12); }
+        .service-card-large:hover img { transform: scale(1.05); }
+        
         .team-card { transition: all 0.3s ease; }
         .team-card:hover { transform: scale(1.02); }
         
@@ -894,7 +906,8 @@ const App = () => {
         
         /* MOBILE STYLES */
         @media (max-width: 1024px) {
-          .services-grid, .services-grid-5 { grid-template-columns: repeat(2, 1fr) !important; }
+          .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .services-grid-5 .service-card-photo { width: calc(50% - 12px) !important; max-width: none !important; }
           .team-grid, .team-grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonials-grid { grid-template-columns: 1fr !important; }
           .insurance-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -905,11 +918,22 @@ const App = () => {
           .desktop-nav { display: none !important; }
           .mobile-toggle { display: flex !important; }
           
-          .services-grid, .services-grid-5 { grid-template-columns: 1fr !important; }
+          .services-grid { grid-template-columns: 1fr !important; }
+          .services-grid-5 { flex-direction: column !important; align-items: center !important; }
+          .services-grid-5 .service-card-photo { width: 100% !important; max-width: 100% !important; min-width: auto !important; }
           .team-grid, .team-grid-3 { grid-template-columns: 1fr !important; }
           .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .insurance-grid { grid-template-columns: 1fr !important; }
+          
+          .service-card-large {
+            flex-direction: column !important;
+          }
+          .service-card-large > div:first-child {
+            width: 100% !important;
+            min-width: 100% !important;
+            height: 200px !important;
+          }
           
           .form-row { grid-template-columns: 1fr !important; }
           
@@ -1310,10 +1334,11 @@ const styles = {
     gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '24px'
   },
-  // New 5-item grid for services with photos
+  // New 5-item grid for services with photos - uses flexbox to center last row
   servicesGrid5: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
     gap: '24px',
     maxWidth: '1100px',
     margin: '0 auto'
@@ -1324,7 +1349,11 @@ const styles = {
     boxShadow: '0 4px 20px rgba(45, 80, 72, 0.08)',
     border: '1px solid rgba(45, 80, 72, 0.06)',
     overflow: 'hidden',
-    transition: 'all 0.3s ease'
+    transition: 'all 0.3s ease',
+    width: 'calc(33.333% - 16px)',
+    minWidth: '300px',
+    maxWidth: '350px',
+    flex: '1 1 calc(33.333% - 16px)'
   },
   serviceCardImageWrapper: {
     position: 'relative',
@@ -1395,6 +1424,36 @@ const styles = {
     display: 'grid',
     gridTemplateColumns: '1fr',
     gap: '24px'
+  },
+  servicesListLarge: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '32px'
+  },
+  serviceCardWithPhoto: {
+    background: 'white',
+    borderRadius: '16px',
+    boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)',
+    border: '1px solid rgba(45, 80, 72, 0.06)',
+    display: 'flex',
+    overflow: 'hidden',
+    transition: 'all 0.3s ease'
+  },
+  serviceCardPhotoLeft: {
+    width: '280px',
+    minWidth: '280px',
+    background: 'linear-gradient(135deg, #A8C6B6 0%, #5B8A72 100%)',
+    overflow: 'hidden'
+  },
+  serviceCardPhotoImg: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    transition: 'transform 0.4s ease'
+  },
+  serviceCardRightContent: {
+    padding: '32px',
+    flex: 1
   },
   serviceCardLarge: {
     background: 'white',
