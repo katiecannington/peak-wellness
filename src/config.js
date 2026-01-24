@@ -29,7 +29,7 @@ export const config = {
   // 3. Copy the form ID (the part after /f/ in your form URL)
   // 4. Paste it below, replacing YOUR_FORMSPREE_ID
   // 5. When someone submits the form, you'll get an email!
-  formspreeId: "YOUR_FORMSPREE_ID",
+  formspreeId: "mnjpqjvq",
   
   // ----------------------
   // ADDRESS
