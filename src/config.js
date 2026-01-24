@@ -97,7 +97,7 @@ export const config = {
   // ----------------------
   // TELEHEALTH STATES
   // ----------------------
-  telehealthStates: ["NC", "SC", "TN", "FL"],
+  telehealthStates: ["TN", "LA"],
   
   // ----------------------
   // SERVICES (using cleaner icons)
@@ -135,7 +135,7 @@ export const config = {
     },
     {
       title: "Telehealth Sessions",
-      description: "Access quality care from anywhere in NC, SC, TN, or FL through secure video sessions.",
+      description: "Access quality care from anywhere in LA or TN through secure video sessions.",
       icon: "video",
       details: ["Secure Platform", "Flexible Scheduling", "Same Quality Care", "Multi-State Licensed"]
     }
