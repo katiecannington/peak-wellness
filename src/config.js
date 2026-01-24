@@ -173,6 +173,7 @@ export const config = {
   // ----------------------
   // INSURANCE PROVIDERS
   // ----------------------
+  showInsuranceProviders: false, // Set to true when you accept insurance
   insuranceProviders: [
     "Blue Cross Blue Shield",
     "Aetna",
@@ -181,6 +182,7 @@ export const config = {
     "Medicare",
     "Medicaid"
   ],
+  insuranceMessage: "We are currently working towards accepting insurance in Tennessee. In the meantime, we offer competitive self-pay rates. Contact us to discuss payment options.",
   
   // ----------------------
   // FAQ ITEMS
