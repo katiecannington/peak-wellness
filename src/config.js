@@ -65,9 +65,9 @@ export const config = {
   // Use the exact filename you uploaded (e.g., "kevin_picture.png")
   team: [
     {
-      name: "Kevin Wimbush",
-      role: "Founder",
-      specialty: "Marriage & Family Therapy",
+      name: "Rev. Kevin Wimbish, MS, LMFT",
+      role: "Co-Founder",
+      specialty: "Licensed Marriage & Family Therapist (NC, TN)",
       image: "/kevin_picture.png"
     },
     {
@@ -251,6 +251,18 @@ export const config = {
     { src: "/photo6.png", alt: "Emotional healing and support" }
   ],
   
+  // ----------------------
+  // PARTNER HIGHLIGHT (Homepage)
+  // ----------------------
+  showPartner: true, // Set to false to hide this section
+  partner: {
+    title: "Church Partnership",
+    name: "First Baptist Concord Church",
+    description: "We're proud to partner with First Baptist Concord Church to extend Christ-centered counseling services to their congregation and community.",
+    logo: "/partner_logo.png",
+    link: "https://concordonline.org/"
+  },
+
   // ----------------------
   // SOCIAL MEDIA (optional)
   // ----------------------
