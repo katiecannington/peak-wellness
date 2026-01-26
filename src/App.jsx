@@ -254,6 +254,40 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Partner Highlight Section */}
+      {config.showPartner && config.partner && (
+        <section style={styles.partnerSection}>
+          <div style={styles.sectionContainer}>
+            <span style={styles.sectionLabel}>{config.partner.title || "Our Partner"}</span>
+            <div className="partner-card" style={styles.partnerCard}>
+              <div style={styles.partnerLogoWrapper}>
+                {config.partner.link ? (
+                  <a href={config.partner.link} target="_blank" rel="noopener noreferrer">
+                    <img 
+                      src={config.partner.logo} 
+                      alt={config.partner.name}
+                      style={styles.partnerLogo}
+                      onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                  </a>
+                ) : (
+                  <img 
+                    src={config.partner.logo} 
+                    alt={config.partner.name}
+                    style={styles.partnerLogo}
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                  />
+                )}
+              </div>
+              <div style={styles.partnerContent}>
+                <h3 style={styles.partnerName}>{config.partner.name}</h3>
+                <p style={styles.partnerDescription}>{config.partner.description}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Services Preview */}
       <section style={styles.servicesSection}>
         <div style={styles.sectionContainer}>
@@ -973,6 +1007,15 @@ const App = () => {
             margin-left: 0 !important;
           }
           
+          .partner-card {
+            flex-direction: column !important;
+            text-align: center !important;
+            padding: 30px 24px !important;
+          }
+          .partner-card > div:last-child {
+            text-align: center !important;
+          }
+          
           .photo-gallery-grid {
             grid-template-columns: repeat(3, 1fr) !important;
           }
@@ -1278,6 +1321,50 @@ const styles = {
     fontSize: '14px',
     color: 'rgba(255,255,255,0.7)',
     fontWeight: '500'
+  },
+
+  // Partner Section
+  partnerSection: {
+    padding: '80px 24px',
+    background: 'linear-gradient(180deg, #F7F5F0 0%, #FFFDF9 100%)',
+    textAlign: 'center'
+  },
+  partnerCard: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '40px',
+    background: 'white',
+    padding: '40px 50px',
+    borderRadius: '20px',
+    boxShadow: '0 4px 25px rgba(45, 80, 72, 0.08)',
+    maxWidth: '800px',
+    margin: '30px auto 0',
+    flexWrap: 'wrap'
+  },
+  partnerLogoWrapper: {
+    flex: '0 0 auto'
+  },
+  partnerLogo: {
+    maxHeight: '100px',
+    maxWidth: '200px',
+    objectFit: 'contain'
+  },
+  partnerContent: {
+    flex: '1 1 300px',
+    textAlign: 'left'
+  },
+  partnerName: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: '24px',
+    fontWeight: '600',
+    color: '#2D3B35',
+    marginBottom: '10px'
+  },
+  partnerDescription: {
+    fontSize: '15px',
+    color: '#5A6B62',
+    lineHeight: '1.7'
   },
 
   // Photo Gallery Section
