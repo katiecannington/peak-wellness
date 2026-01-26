@@ -66,7 +66,7 @@ export const config = {
   team: [
     {
       name: "Rev. Kevin Wimbish, MS, LMFT",
-      role: "Co-Founder",
+      role: "Founder",
       specialty: "Licensed Marriage & Family Therapist (NC, TN)",
       image: "/kevin_picture.png"
     },
