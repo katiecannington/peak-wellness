@@ -81,6 +81,12 @@ export const config = {
       role: "Business Manager",
       specialty: "Operations",
       image: "/allen_picture.png"
+    },
+    {
+      name: "Katie Cannington",
+      role: "Administrative Coordinator",
+      specialty: "Client Services",
+      image: "/katie_picture.png"
     }
   ],
   
