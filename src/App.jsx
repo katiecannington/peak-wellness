@@ -908,7 +908,7 @@ const App = () => {
         @media (max-width: 1024px) {
           .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .services-grid-5 .service-card-photo { width: calc(50% - 12px) !important; max-width: none !important; }
-          .team-grid, .team-grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
+          .team-grid, .team-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
           .testimonials-grid { grid-template-columns: 1fr !important; }
           .insurance-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .rights-grid { grid-template-columns: 1fr !important; }
@@ -1506,9 +1506,9 @@ const styles = {
   // Team Page
   teamGridPage: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '32px',
-    maxWidth: '900px',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '24px',
+    maxWidth: '1000px',
     margin: '0 auto'
   },
   teamCardPage: {
