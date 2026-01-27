@@ -256,7 +256,7 @@ export const config = {
   // ----------------------
   showPartner: true, // Set to false to hide this section
   partner: {
-    title: "Church Partnership",
+    title: "Featured Partnership",
     name: "First Baptist Concord Church",
     description: "We're proud to partner with First Baptist Concord Church to extend Christ-centered counseling services to their congregation and community.",
     logo: "/partner_logo.png",
