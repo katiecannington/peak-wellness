@@ -17,8 +17,8 @@ export const config = {
   // ----------------------
   // CONTACT INFORMATION
   // ----------------------
-  phone: "(828) 333-1285",
-  phoneRaw: "8283331285",
+  phone: "(865) 643-8838",
+  phoneRaw: "8656438838",
   email: "hello@peakwellnesscenters.org",
   
   // ----------------------
@@ -66,7 +66,7 @@ export const config = {
   team: [
     {
       name: "Rev. Kevin Wimbish, MS, LMFT",
-      role: "Founder",
+      role: "Co-Founder",
       specialty: "Licensed Marriage & Family Therapist (NC, TN)",
       image: "/kevin_picture.png"
     },
@@ -97,7 +97,7 @@ export const config = {
     {
       city: "Knoxville",
       address: "11726 Kingston Pike",
-      phone: "(828) 333-1285"
+      phone: "(865) 643-8838"
     }
   ],
   
@@ -196,7 +196,7 @@ export const config = {
   faqItems: [
     {
       question: "How do I schedule an appointment?",
-      answer: "You can schedule an appointment by calling our office at (828) 333-1285, sending us an email, or filling out our contact form. We offer same-week appointments and will get back to you within 24 hours."
+      answer: "You can schedule an appointment by calling our office at (865) 643-8838, sending us an email, or filling out our contact form. We offer same-week appointments and will get back to you within 24 hours."
     },
     {
       question: "Do you accept insurance?",
