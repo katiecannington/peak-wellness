@@ -35,10 +35,10 @@ export const config = {
   // ADDRESS
   // ----------------------
   address: {
-    street: "38 Rosscraggon Road",
-    city: "Asheville",
-    state: "NC",
-    zip: "28803"
+    street: "11726 Kingston Pike",
+    city: "Knoxville",
+    state: "TN",
+    zip: "37934"
   },
   
   // ----------------------
@@ -71,8 +71,8 @@ export const config = {
       image: "/kevin_picture.png"
     },
     {
-      name: "Morgan Nichols",
-      role: "Licensed Counselor",
+      name: "Morgan Nichols, LMSW",
+      role: "Lead Counselor",
       specialty: "Clinical Counseling",
       image: "/morgan_picture.png"
     },
@@ -95,8 +95,8 @@ export const config = {
   // ----------------------
   locations: [
     {
-      city: "Asheville",
-      address: "38 Rosscraggon Road",
+      city: "Knoxville",
+      address: "11726 Kingston Pike",
       phone: "(828) 333-1285"
     }
   ],
