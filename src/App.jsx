@@ -637,14 +637,14 @@ const BioPage = () => {
                 <p style={{...styles.bioParagraph, fontStyle: 'italic'}}>"{member.bio.personal}"</p>
               </div>
             )}
-          </div>
 
-          {/* CTA */}
-          <div style={styles.bioCta}>
-            <h3 style={styles.bioCtaTitle}>Ready to schedule with {member.name.split(',')[0].split(' ').find(word => !['Rev.', 'Dr.', 'Mr.', 'Ms.', 'Mrs.'].includes(word))}?</h3>
-            <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
-              Contact Us
-            </button>
+            {/* CTA */}
+            <div style={styles.bioCta}>
+              <h3 style={styles.bioCtaTitle}>Ready to schedule with {member.name.split(',')[0].split(' ').find(word => !['Rev.', 'Dr.', 'Mr.', 'Ms.', 'Mrs.'].includes(word))}?</h3>
+              <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
+                Contact Us
+              </button>
+            </div>
           </div>
         </div>
       </section>
