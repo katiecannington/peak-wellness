@@ -1912,7 +1912,8 @@ const styles = {
     background: '#FFFDF9'
   },
   bioContent: {
-    maxWidth: '800px'
+    maxWidth: '800px',
+    margin: '0 auto'
   },
   bioSection: {
     marginBottom: '32px'
