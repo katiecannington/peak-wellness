@@ -633,7 +633,7 @@ const BioPage = () => {
             {/* Personal Note (for Morgan) */}
             {member.bio.personal && (
               <div style={styles.bioSection}>
-                <h3 style={styles.bioSectionTitle}>A Word from {member.name.split(',')[0].split(' ').pop()}</h3>
+                <h3 style={styles.bioSectionTitle}>A Word from {member.name.split(',')[0].split(' ').find(word => !['Rev.', 'Dr.', 'Mr.', 'Ms.', 'Mrs.'].includes(word))}</h3>
                 <p style={{...styles.bioParagraph, fontStyle: 'italic'}}>"{member.bio.personal}"</p>
               </div>
             )}
@@ -641,7 +641,7 @@ const BioPage = () => {
 
           {/* CTA */}
           <div style={styles.bioCta}>
-            <h3 style={styles.bioCtaTitle}>Ready to schedule with {member.name.split(',')[0].split(' ').pop()}?</h3>
+            <h3 style={styles.bioCtaTitle}>Ready to schedule with {member.name.split(',')[0].split(' ').find(word => !['Rev.', 'Dr.', 'Mr.', 'Ms.', 'Mrs.'].includes(word))}?</h3>
             <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
               Contact Us
             </button>
@@ -1908,27 +1908,27 @@ const styles = {
     fontStyle: 'italic'
   },
   bioContentSection: {
-    padding: '60px 32px',
+    padding: '40px 32px 60px',
     background: '#FFFDF9'
   },
   bioContent: {
     maxWidth: '800px'
   },
   bioSection: {
-    marginBottom: '40px'
+    marginBottom: '32px'
   },
   bioSectionTitle: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: '24px',
+    fontSize: '22px',
     fontWeight: '600',
     color: '#2D3B35',
-    marginBottom: '16px'
+    marginBottom: '12px'
   },
   bioParagraph: {
-    fontSize: '16px',
+    fontSize: '15px',
     color: '#4A5B52',
-    lineHeight: '1.8',
-    marginBottom: '16px'
+    lineHeight: '1.7',
+    marginBottom: '12px'
   },
   bioList: {
     listStyle: 'none',
@@ -1938,14 +1938,14 @@ const styles = {
   bioListItem: {
     fontSize: '15px',
     color: '#4A5B52',
-    lineHeight: '1.7',
+    lineHeight: '1.6',
     paddingLeft: '24px',
     position: 'relative',
-    marginBottom: '12px'
+    marginBottom: '8px'
   },
   bioCta: {
-    marginTop: '60px',
-    padding: '40px',
+    marginTop: '40px',
+    padding: '32px',
     background: 'linear-gradient(135deg, rgba(91, 138, 114, 0.1) 0%, rgba(45, 80, 72, 0.05) 100%)',
     borderRadius: '16px',
     textAlign: 'center'
