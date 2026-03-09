@@ -68,17 +68,52 @@ export const config = {
       name: "Rev. Kevin Wimbish, MS, LMFT",
       role: "Co-Founder",
       specialty: "Licensed Marriage & Family Therapist (NC, TN)",
-      image: "/kevin_picture.png"
+      image: "/kevin_picture.png",
+      slug: "kevin-wimbish",
+      credentials: "Licensed Marriage and Family Therapist (NC), Licensed Marital and Family Therapist (TN)",
+      licenses: "NC License #1198, TN License #2287",
+      bio: {
+        education: [
+          "Bachelor of Science in Human Development with a minor in Sociology from UNC – Greensboro (2002)",
+          "MS in Marriage and Family Therapy from Auburn University (2004)",
+          "Additional training at The Barnabas Center in Charlotte, NC, influenced by the works of Dr. Dan Allender & Dr. Larry Crabb",
+          "Trained in executive coaching for corporate coaching and consulting services"
+        ],
+        experience: `Kevin began his professional career as a substance abuse counselor at Stonewall Jackson Juvenile Detention Center and as a contract counselor at Hickory Grove Baptist Church in Charlotte, NC. He then began the adolescent counseling arm at The Barnabas Center.
+
+Kevin and his wife Julie moved to Asheville, NC to raise their family in Western North Carolina & work with the Hope Network at Biltmore Baptist Church in 2007. While at Biltmore Baptist, Kevin was asked to develop and lead the Online Campus as the Online Campus Pastor and then asked to be on the team to start the first multi-site campus as the Family Pastor. Guided by his training and experience in Marriage & Family Therapy and previous ministry leadership roles, he developed, led, and managed teams of volunteers who led the kids, students, and guest services teams.
+
+Kevin resigned from Biltmore Baptist in 2014 to start Family Life Coach to work with individuals, couples, and families while serving churches throughout Western North Carolina. He also served as a Pastor In Residence at The Cove from 2017 – 2022.
+
+Kevin merged FLC with A Clear Word Counseling Center to create Summit Wellness Centers, PLLC in 2018, where he still leads & practices in WNC.
+
+In 2025, Kevin helped in the development of Peak Wellness Centers, PLLC with Allen Williams, in collaboration with First Baptist Concord Church, to serve clients in the greater Knoxville, TN area.`
+      }
     },
     {
       name: "Morgan Nichols, LMSW",
       role: "Lead Counselor",
-      specialty: "Clinical Counseling",
-      image: "/morgan_picture.png"
+      specialty: "Licensed Master Social Worker (LA, TN)",
+      image: "/morgan_picture.png",
+      slug: "morgan-nichols",
+      credentials: "Licensed Master Social Worker (LA and TN)",
+      licenses: "LA License #17212, TN License #16376",
+      bio: {
+        summary: `Morgan came to know and love the profession of social work through the care her family received from bereavement programs as they walked seasons of grief and sorrow. Before fully understanding social work and its scope, Morgan became passionate about walking alongside people as they faced difficulty and isolation, and quickly saw the power of relating to others in struggle. Morgan is incredibly grateful for the opportunity to serve others out of what she has learned through challenges faced. She believes that every person has value and finds it important to assist clients in restoring their sense of hope and self-worth.`,
+        education: [
+          "Bachelor in Social Work from Midwestern State University (2018)",
+          "Master's in Social Work from Louisiana State University (2022)",
+          "Experience with Children's Bereavement Programs in Wichita Falls, TX and Shreveport, LA",
+          "Internship at the Council of Alcoholism and Drug Abuse (CADA) in Shreveport, LA",
+          "Licensed Master Social Worker at Clint Davis Counseling & Integrative Wellness (2022-2025)"
+        ],
+        approach: `Morgan is eager to invite clients into an environment that allows for vulnerability and openness without judgment. She holds a desire for clients to feel seen, heard, and supported as they share the weight of their current struggles. She sees this profession as a privilege to help others identify the origins of their pain and encourage them as they courageously take steps in their journey of healing and growth.`,
+        personal: `I enjoy helping clients find solutions to their struggles through healthy and effective coping skills, encouraging mindfulness, and identifying clients' strengths. I love spending time outside and being active with my husband, Caleb, son, Bishop, and our pups, Charlie and Walker. There are few things I enjoy more than getting to go on a walk in the sunshine with all of the boys of my family!`
+      }
     },
     {
       name: "Allen Williams",
-      role: "Business Manager",
+      role: "Chief Experience Officer",
       specialty: "Operations",
       image: "/allen_picture.png"
     },
