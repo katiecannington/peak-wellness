@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { config } from './config';
 
 // Clean SVG Icons
@@ -437,9 +437,10 @@ const TeamPage = () => {
   const TeamMemberCard = ({ member }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const [imageError, setImageError] = useState(false);
+    const hasBio = member.slug && member.bio;
     
-    return (
-      <div className="team-card" style={styles.teamCardPage}>
+    const cardContent = (
+      <>
         <div style={styles.teamImageWrapperPage}>
           {!imageError && (
             <img 
@@ -466,6 +467,23 @@ const TeamPage = () => {
         <h4 style={styles.teamNamePage}>{member.name}</h4>
         <p style={styles.teamRolePage}>{member.role}</p>
         <span style={styles.teamSpecialtyPage}>{member.specialty}</span>
+        {hasBio && (
+          <span style={styles.viewBioLink}>View Full Bio →</span>
+        )}
+      </>
+    );
+    
+    return hasBio ? (
+      <div 
+        className="team-card" 
+        style={{...styles.teamCardPage, cursor: 'pointer'}}
+        onClick={() => navigate(`/team/${member.slug}`)}
+      >
+        {cardContent}
+      </div>
+    ) : (
+      <div className="team-card" style={styles.teamCardPage}>
+        {cardContent}
       </div>
     );
   };
@@ -496,6 +514,138 @@ const TeamPage = () => {
           <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
             Contact Us
           </button>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+// BIO PAGE (Individual team member bio)
+const BioPage = () => {
+  const { slug } = useParams();
+  const navigate = useNavigate();
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  
+  const member = config.team.find(m => m.slug === slug);
+  
+  if (!member || !member.bio) {
+    return (
+      <div style={{ paddingTop: '120px', textAlign: 'center', minHeight: '60vh' }}>
+        <h1 style={styles.pageTitle}>Team member not found</h1>
+        <button onClick={() => navigate('/team')} style={styles.ctaButton}>
+          Back to Team
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ paddingTop: '80px' }}>
+      {/* Back Link */}
+      <div style={{ padding: '20px 32px', background: '#FFFDF9' }}>
+        <div style={styles.sectionContainer}>
+          <button 
+            onClick={() => navigate('/team')} 
+            style={styles.backLink}
+          >
+            ← Back to Team
+          </button>
+        </div>
+      </div>
+
+      {/* Bio Header */}
+      <section style={styles.bioHeaderSection}>
+        <div style={styles.sectionContainer}>
+          <div className="bio-header" style={styles.bioHeader}>
+            <div style={styles.bioImageWrapper}>
+              {!imageError && (
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  style={{
+                    ...styles.bioImage,
+                    opacity: imageLoaded ? 1 : 0,
+                  }}
+                  onLoad={() => setImageLoaded(true)}
+                  onError={() => setImageError(true)}
+                />
+              )}
+              {(imageError || !imageLoaded) && (
+                <div style={styles.bioAvatarFallback}>
+                  {member.name.split(' ').map(n => n[0]).join('')}
+                </div>
+              )}
+            </div>
+            <div className="bio-header-content" style={styles.bioHeaderContent}>
+              <h1 style={styles.bioName}>{member.name}</h1>
+              <p style={styles.bioRole}>{member.role}</p>
+              <p style={styles.bioCredentials}>{member.credentials}</p>
+              {member.licenses && (
+                <p style={styles.bioLicenses}>{member.licenses}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bio Content */}
+      <section style={styles.bioContentSection}>
+        <div style={styles.sectionContainer}>
+          <div style={styles.bioContent}>
+            {/* Summary (for Morgan) */}
+            {member.bio.summary && (
+              <div style={styles.bioSection}>
+                <p style={styles.bioParagraph}>{member.bio.summary}</p>
+              </div>
+            )}
+
+            {/* Education */}
+            {member.bio.education && (
+              <div style={styles.bioSection}>
+                <h3 style={styles.bioSectionTitle}>Education & Training</h3>
+                <ul className="bio-list" style={styles.bioList}>
+                  {member.bio.education.map((item, i) => (
+                    <li key={i} style={styles.bioListItem}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Experience (for Kevin) */}
+            {member.bio.experience && (
+              <div style={styles.bioSection}>
+                <h3 style={styles.bioSectionTitle}>Experience</h3>
+                {member.bio.experience.split('\n\n').map((para, i) => (
+                  <p key={i} style={styles.bioParagraph}>{para}</p>
+                ))}
+              </div>
+            )}
+
+            {/* Approach (for Morgan) */}
+            {member.bio.approach && (
+              <div style={styles.bioSection}>
+                <h3 style={styles.bioSectionTitle}>Approach</h3>
+                <p style={styles.bioParagraph}>{member.bio.approach}</p>
+              </div>
+            )}
+
+            {/* Personal Note (for Morgan) */}
+            {member.bio.personal && (
+              <div style={styles.bioSection}>
+                <h3 style={styles.bioSectionTitle}>A Word from {member.name.split(',')[0].split(' ').pop()}</h3>
+                <p style={{...styles.bioParagraph, fontStyle: 'italic'}}>"{member.bio.personal}"</p>
+              </div>
+            )}
+          </div>
+
+          {/* CTA */}
+          <div style={styles.bioCta}>
+            <h3 style={styles.bioCtaTitle}>Ready to schedule with {member.name.split(',')[0].split(' ').pop()}?</h3>
+            <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
+              Contact Us
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -1016,9 +1166,27 @@ const App = () => {
             text-align: center !important;
           }
           
+          .bio-header {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .bio-header-content {
+            text-align: center !important;
+          }
+          
           .photo-gallery-grid {
             grid-template-columns: repeat(3, 1fr) !important;
           }
+        }
+        
+        /* Bio list bullet styles */
+        .bio-list li::before {
+          content: "•";
+          color: #5B8A72;
+          font-weight: bold;
+          position: absolute;
+          left: 0;
         }
       `}</style>
 
@@ -1030,6 +1198,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/team" element={<TeamPage />} />
+          <Route path="/team/:slug" element={<BioPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
         </Routes>
@@ -1652,6 +1821,141 @@ const styles = {
     padding: '6px 14px',
     borderRadius: '20px',
     display: 'inline-block'
+  },
+  viewBioLink: {
+    display: 'block',
+    marginTop: '16px',
+    fontSize: '14px',
+    color: '#5B8A72',
+    fontWeight: '500'
+  },
+
+  // Bio Page
+  backLink: {
+    background: 'none',
+    border: 'none',
+    color: '#5B8A72',
+    fontSize: '14px',
+    fontWeight: '500',
+    cursor: 'pointer',
+    padding: '0'
+  },
+  bioHeaderSection: {
+    padding: '40px 32px 60px',
+    background: 'linear-gradient(180deg, #FFFDF9 0%, #F7F5F0 100%)'
+  },
+  bioHeader: {
+    display: 'flex',
+    gap: '40px',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap'
+  },
+  bioImageWrapper: {
+    width: '200px',
+    height: '200px',
+    borderRadius: '50%',
+    overflow: 'hidden',
+    flexShrink: 0,
+    background: 'linear-gradient(135deg, #A8C6B6 0%, #5B8A72 100%)',
+    boxShadow: '0 10px 30px rgba(45, 80, 72, 0.15)',
+    position: 'relative'
+  },
+  bioImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover'
+  },
+  bioAvatarFallback: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '48px',
+    fontWeight: '600',
+    color: 'white',
+    fontFamily: "'Cormorant Garamond', serif",
+    position: 'absolute',
+    top: 0,
+    left: 0
+  },
+  bioHeaderContent: {
+    flex: 1,
+    minWidth: '280px'
+  },
+  bioName: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 'clamp(28px, 4vw, 36px)',
+    fontWeight: '600',
+    color: '#2D3B35',
+    marginBottom: '8px'
+  },
+  bioRole: {
+    fontSize: '18px',
+    color: '#5B8A72',
+    fontWeight: '600',
+    marginBottom: '12px'
+  },
+  bioCredentials: {
+    fontSize: '15px',
+    color: '#5A6B62',
+    lineHeight: '1.6',
+    marginBottom: '8px'
+  },
+  bioLicenses: {
+    fontSize: '13px',
+    color: '#7A8B82',
+    fontStyle: 'italic'
+  },
+  bioContentSection: {
+    padding: '60px 32px',
+    background: '#FFFDF9'
+  },
+  bioContent: {
+    maxWidth: '800px'
+  },
+  bioSection: {
+    marginBottom: '40px'
+  },
+  bioSectionTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: '24px',
+    fontWeight: '600',
+    color: '#2D3B35',
+    marginBottom: '16px'
+  },
+  bioParagraph: {
+    fontSize: '16px',
+    color: '#4A5B52',
+    lineHeight: '1.8',
+    marginBottom: '16px'
+  },
+  bioList: {
+    listStyle: 'none',
+    padding: 0,
+    margin: 0
+  },
+  bioListItem: {
+    fontSize: '15px',
+    color: '#4A5B52',
+    lineHeight: '1.7',
+    paddingLeft: '24px',
+    position: 'relative',
+    marginBottom: '12px'
+  },
+  bioCta: {
+    marginTop: '60px',
+    padding: '40px',
+    background: 'linear-gradient(135deg, rgba(91, 138, 114, 0.1) 0%, rgba(45, 80, 72, 0.05) 100%)',
+    borderRadius: '16px',
+    textAlign: 'center'
+  },
+  bioCtaTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: '24px',
+    fontWeight: '500',
+    color: '#2D3B35',
+    marginBottom: '20px'
   },
 
   // Testimonials
