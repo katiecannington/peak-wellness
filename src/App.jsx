@@ -847,6 +847,39 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Our Location Section */}
+      <section style={styles.locationSection}>
+        <div style={styles.sectionContainer}>
+          <div className="location-grid" style={styles.locationGrid}>
+            <div style={styles.locationImageWrapper}>
+              <img 
+                src="/office_building.jpg" 
+                alt="Peak Wellness Centers office building"
+                style={styles.locationImage}
+              />
+            </div>
+            <div style={styles.locationContent}>
+              <h3 style={styles.locationTitle}>Our Location</h3>
+              <p style={styles.locationText}>
+                We're located in a welcoming, private setting designed to help you feel comfortable from the moment you arrive.
+              </p>
+              <div style={styles.locationAddress}>
+                <p><strong>{config.address.street}</strong></p>
+                <p>{config.address.city}, {config.address.state} {config.address.zip}</p>
+              </div>
+              <a 
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${config.address.street}, ${config.address.city}, ${config.address.state} ${config.address.zip}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={styles.directionsLink}
+              >
+                Get Directions →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
@@ -1108,6 +1141,7 @@ const App = () => {
           .team-grid, .team-grid-3 { grid-template-columns: 1fr !important; }
           .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .location-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .insurance-grid { grid-template-columns: 1fr !important; }
           
           .service-card-large {
@@ -2130,6 +2164,60 @@ const styles = {
     color: '#5A6B62',
     lineHeight: '1.6'
   },
+  
+  // Location Section (Contact Page)
+  locationSection: {
+    padding: '80px 32px',
+    background: 'linear-gradient(180deg, #F7F5F0 0%, #FFFDF9 100%)'
+  },
+  locationGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '60px',
+    alignItems: 'center',
+    maxWidth: '1000px',
+    margin: '0 auto'
+  },
+  locationImageWrapper: {
+    borderRadius: '16px',
+    overflow: 'hidden',
+    boxShadow: '0 15px 40px rgba(45, 80, 72, 0.12)'
+  },
+  locationImage: {
+    width: '100%',
+    height: 'auto',
+    display: 'block'
+  },
+  locationContent: {
+    padding: '20px 0'
+  },
+  locationTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: '32px',
+    fontWeight: '600',
+    color: '#2D3B35',
+    marginBottom: '16px'
+  },
+  locationText: {
+    fontSize: '16px',
+    color: '#5A6B62',
+    lineHeight: '1.7',
+    marginBottom: '24px'
+  },
+  locationAddress: {
+    fontSize: '16px',
+    color: '#2D3B35',
+    lineHeight: '1.6',
+    marginBottom: '20px'
+  },
+  directionsLink: {
+    display: 'inline-block',
+    color: '#5B8A72',
+    fontSize: '16px',
+    fontWeight: '600',
+    textDecoration: 'none'
+  },
+
   contactPageForm: {
     background: 'white',
     padding: '40px',
