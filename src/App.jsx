@@ -173,7 +173,7 @@ const Footer = () => (
             <Link to="/resources" className="footer-link" style={styles.footerLink}>FAQ</Link>
             <Link to="/resources#insurance" className="footer-link" style={styles.footerLink}>Insurance Info</Link>
             <Link to="/resources#rights" className="footer-link" style={styles.footerLink}>Patient Rights</Link>
-            <Link to="/resources#privacy" className="footer-link" style={styles.footerLink}>Privacy Policy</Link>
+            <Link to="/privacy-policy" className="footer-link" style={styles.footerLink}>Privacy Policy</Link>
           </div>
           <div style={styles.footerColumn}>
             <h4 style={styles.footerHeading}>Contact</h4>
@@ -593,23 +593,6 @@ const BioPage = () => {
       <section style={styles.bioContentSection}>
         <div style={styles.sectionContainer}>
           <div style={styles.bioContent}>
-
-            {/* Vimeo Intro Video — Kevin only */}
-            {slug === 'kevin-wimbish' && (
-              <div style={{ marginBottom: '40px' }}>
-                <div style={{ padding: '56.25% 0 0 0', position: 'relative', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(45, 80, 72, 0.12)' }}>
-                  <iframe
-                    src="https://player.vimeo.com/video/1178491798?badge=0&autopause=0&player_id=0&app_id=58479"
-                    frameBorder="0"
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                    title="Kevin Wimbish Intro"
-                  />
-                </div>
-              </div>
-            )}
-
             {/* Summary (for Morgan) */}
             {member.bio.summary && (
               <div style={styles.bioSection}>
@@ -676,12 +659,17 @@ const ContactPage = () => {
     lastName: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    smsConsent: false
   });
   const [formStatus, setFormStatus] = useState('idle');
 
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    setFormData({ 
+      ...formData, 
+      [name]: type === 'checkbox' ? checked : value 
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -697,7 +685,7 @@ const ContactPage = () => {
       
       if (response.ok) {
         setFormStatus('success');
-        setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+        setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '', smsConsent: false });
       } else {
         setFormStatus('error');
       }
@@ -851,6 +839,26 @@ const ContactPage = () => {
                     rows={5} 
                   />
                 </div>
+                
+                {/* SMS Consent */}
+                <div style={styles.smsConsentBox}>
+                  <label style={styles.checkboxLabel}>
+                    <input 
+                      type="checkbox"
+                      name="smsConsent"
+                      checked={formData.smsConsent}
+                      onChange={handleInputChange}
+                      style={styles.checkbox}
+                    />
+                    <span style={styles.checkboxText}>
+                      I agree to receive text messages from Peak Wellness Centers regarding appointment confirmations, reminders, and service-related communications.
+                    </span>
+                  </label>
+                  <p style={styles.smsDisclosure}>
+                    Message frequency may vary. Message and data rates may apply. Reply STOP to opt out, HELP for help. Consent is not required to receive services. View our <Link to="/privacy-policy" style={styles.inlineLink}>Privacy Policy</Link>.
+                  </p>
+                </div>
+
                 <button 
                   type="submit" 
                   className="submit-btn" 
@@ -1069,6 +1077,119 @@ const ResourcesPage = () => {
   );
 };
 
+// PRIVACY POLICY PAGE (Standalone for SMS compliance)
+const PrivacyPolicyPage = () => {
+  return (
+    <div style={{ paddingTop: '80px' }}>
+      <section style={styles.pageHeader}>
+        <span style={styles.sectionLabel}>Legal</span>
+        <h1 style={styles.pageTitle}>Privacy Policy</h1>
+        <p style={styles.pageSubtitle}>Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+      </section>
+
+      <section style={styles.privacySection}>
+        <div style={styles.privacyContainer}>
+          <div style={styles.privacyContent}>
+            <h2 style={styles.privacySectionTitle}>Introduction</h2>
+            <p style={styles.privacyText}>
+              Peak Wellness Centers PLLC ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or communicate with us.
+            </p>
+
+            <h2 style={styles.privacySectionTitle}>Information We Collect</h2>
+            <p style={styles.privacyText}>
+              We may collect personal information that you voluntarily provide to us when you:
+            </p>
+            <ul style={styles.privacyList}>
+              <li>Fill out forms on our website (contact forms, intake paperwork)</li>
+              <li>Schedule appointments through our website or scheduling tools</li>
+              <li>Communicate with us via phone, email, or text message</li>
+              <li>Subscribe to receive communications from us</li>
+            </ul>
+            <p style={styles.privacyText}>
+              This information may include your name, email address, phone number, and any other information you choose to provide.
+            </p>
+
+            <h2 style={styles.privacySectionTitle}>How We Use Your Information</h2>
+            <p style={styles.privacyText}>
+              We use the information we collect to:
+            </p>
+            <ul style={styles.privacyList}>
+              <li>Provide and manage our counseling services</li>
+              <li>Send appointment confirmations, reminders, and telehealth session links</li>
+              <li>Respond to your inquiries and service requests</li>
+              <li>Send intake and paperwork follow-ups</li>
+              <li>Communicate important information about our services</li>
+            </ul>
+
+            <h2 style={styles.privacySectionTitle}>Text Messaging (SMS) Communications</h2>
+            <p style={styles.privacyText}>
+              When you provide your phone number through our website forms, intake paperwork, or scheduling tools, you may receive text messages from Peak Wellness Centers. These messages may include:
+            </p>
+            <ul style={styles.privacyList}>
+              <li>Appointment confirmations and reminders</li>
+              <li>Telehealth session links</li>
+              <li>Intake and paperwork follow-ups</li>
+              <li>Responses to scheduling or service questions</li>
+            </ul>
+            <p style={styles.privacyText}>
+              <strong>Message frequency may vary. Message and data rates may apply.</strong>
+            </p>
+            <p style={styles.privacyText}>
+              Consent to receive text messages is not a condition of receiving services. You can opt out at any time by replying <strong>STOP</strong> to any text message. Reply <strong>HELP</strong> for more information or contact us at {config.email}.
+            </p>
+            <p style={styles.privacyText}>
+              <strong>Your phone number and information will not be sold or shared with third parties for marketing purposes.</strong>
+            </p>
+
+            <h2 style={styles.privacySectionTitle}>Information Sharing</h2>
+            <p style={styles.privacyText}>
+              We do not sell, trade, or otherwise transfer your personal information to outside parties except as required to provide our services or as required by law. This does not include trusted third parties who assist us in operating our website or conducting our business, so long as those parties agree to keep this information confidential.
+            </p>
+
+            <h2 style={styles.privacySectionTitle}>Health Information (HIPAA)</h2>
+            <p style={styles.privacyText}>
+              As a healthcare provider, we are committed to protecting your health information in accordance with the Health Insurance Portability and Accountability Act (HIPAA). Protected health information (PHI) is handled according to our Notice of Privacy Practices, which is provided to all clients at the start of services.
+            </p>
+
+            <h2 style={styles.privacySectionTitle}>Data Security</h2>
+            <p style={styles.privacyText}>
+              We implement appropriate security measures to protect your personal information. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+            </p>
+
+            <h2 style={styles.privacySectionTitle}>Your Rights</h2>
+            <p style={styles.privacyText}>
+              You have the right to:
+            </p>
+            <ul style={styles.privacyList}>
+              <li>Access the personal information we hold about you</li>
+              <li>Request correction of inaccurate information</li>
+              <li>Request deletion of your information (subject to legal requirements)</li>
+              <li>Opt out of text message communications at any time</li>
+            </ul>
+
+            <h2 style={styles.privacySectionTitle}>Changes to This Policy</h2>
+            <p style={styles.privacyText}>
+              We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page with an updated revision date.
+            </p>
+
+            <h2 style={styles.privacySectionTitle}>Contact Us</h2>
+            <p style={styles.privacyText}>
+              If you have questions about this Privacy Policy or our privacy practices, please contact us:
+            </p>
+            <div style={styles.privacyContactBox}>
+              <p><strong>Peak Wellness Centers PLLC</strong></p>
+              <p>{config.address.street}</p>
+              <p>{config.address.city}, {config.address.state} {config.address.zip}</p>
+              <p>Phone: <a href={`tel:${config.phoneRaw}`} style={styles.inlineLink}>{config.phone}</a></p>
+              <p>Email: <a href={`mailto:${config.email}`} style={styles.inlineLink}>{config.email}</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
 // MAIN APP COMPONENT
 const App = () => {
   return (
@@ -1251,7 +1372,9 @@ const App = () => {
           <Route path="/team" element={<TeamPage />} />
           <Route path="/team/:slug" element={<BioPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/contact-us" element={<ContactPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         </Routes>
       </main>
       
@@ -1641,6 +1764,7 @@ const styles = {
     gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '24px'
   },
+  // New 5-item grid for services with photos - uses flexbox to center last row
   servicesGrid5: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -2234,6 +2358,49 @@ const styles = {
     textDecoration: 'none'
   },
 
+  // Privacy Policy Page
+  privacySection: {
+    padding: '60px 32px 80px',
+    background: '#FFFDF9'
+  },
+  privacyContainer: {
+    maxWidth: '800px',
+    margin: '0 auto'
+  },
+  privacyContent: {
+    background: 'white',
+    padding: '48px',
+    borderRadius: '16px',
+    boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)'
+  },
+  privacySectionTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: '22px',
+    fontWeight: '600',
+    color: '#2D3B35',
+    marginTop: '32px',
+    marginBottom: '12px'
+  },
+  privacyText: {
+    fontSize: '15px',
+    color: '#4A5B52',
+    lineHeight: '1.7',
+    marginBottom: '12px'
+  },
+  privacyList: {
+    paddingLeft: '24px',
+    marginBottom: '16px'
+  },
+  privacyContactBox: {
+    background: 'rgba(91, 138, 114, 0.08)',
+    padding: '20px 24px',
+    borderRadius: '12px',
+    marginTop: '16px',
+    fontSize: '15px',
+    color: '#4A5B52',
+    lineHeight: '1.8'
+  },
+
   contactPageForm: {
     background: 'white',
     padding: '40px',
@@ -2290,6 +2457,38 @@ const styles = {
     resize: 'vertical',
     minHeight: '120px',
     width: '100%'
+  },
+  smsConsentBox: {
+    background: 'rgba(91, 138, 114, 0.05)',
+    padding: '16px 20px',
+    borderRadius: '12px',
+    marginBottom: '20px',
+    border: '1px solid rgba(91, 138, 114, 0.15)'
+  },
+  checkboxLabel: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: '12px',
+    cursor: 'pointer'
+  },
+  checkbox: {
+    width: '18px',
+    height: '18px',
+    marginTop: '2px',
+    accentColor: '#5B8A72',
+    cursor: 'pointer'
+  },
+  checkboxText: {
+    fontSize: '14px',
+    color: '#4A5B52',
+    lineHeight: '1.5'
+  },
+  smsDisclosure: {
+    fontSize: '12px',
+    color: '#7A8B82',
+    lineHeight: '1.5',
+    marginTop: '10px',
+    paddingLeft: '30px'
   },
   submitButton: {
     background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
