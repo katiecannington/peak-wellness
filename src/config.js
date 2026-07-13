@@ -65,7 +65,7 @@ export const config = {
   // Use the exact filename you uploaded (e.g., "kevin_picture.png")
   team: [
     {
-      name: "Rev. Kevin Wimbish, MS, LMFT",
+      name: "Rev. Kevin Wimbish, MS, LMFT, OCDCC",
       role: "Co-Founder",
       specialty: "Licensed Marriage & Family Therapist (NC, TN)",
       image: "/kevin_picture.png",
