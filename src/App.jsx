@@ -1138,7 +1138,7 @@ const PrivacyPolicyPage = () => {
               Consent to receive text messages is not a condition of receiving services. You can opt out at any time by replying <strong>STOP</strong> to any text message. Reply <strong>HELP</strong> for more information or contact us at {config.email}.
             </p>
             <p style={styles.privacyText}>
-              <strong>Your phone number and information will not be sold or shared with third parties for marketing purposes.</strong>
+              <strong>No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</strong>
             </p>
 
             <h2 style={styles.privacySectionTitle}>Information Sharing</h2>
