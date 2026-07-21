@@ -1077,6 +1077,173 @@ const ResourcesPage = () => {
   );
 };
 
+// GROWING UP IN GRACE PAGE
+const GrowingUpInGracePage = () => {
+  const navigate = useNavigate();
+  
+  const phases = [
+    {
+      number: 1,
+      title: "Early Childhood",
+      ages: "Ages 3-4½",
+      stage: "Entering Preschool / Pre-K",
+      role: "The Commander",
+      description: "Loving, steady authority providing a safe perimeter of routines."
+    },
+    {
+      number: 2,
+      title: "Middle Childhood",
+      ages: "Ages 5-7",
+      stage: "Entering Kindergarten - 2nd Grade",
+      role: "The Coach",
+      description: "Standing on the sidelines to guide, encourage, and prompt independent effort."
+    },
+    {
+      number: 3,
+      title: "Pre-Adolescence",
+      ages: "Ages 8-10",
+      stage: "Entering 3rd - 5th Grade",
+      role: "The Coach",
+      description: "Shifting from micromanagement to protecting your relational connection."
+    },
+    {
+      number: 4,
+      title: "Early Adolescence",
+      ages: "Ages 11-12",
+      stage: "Entering 6th - 7th Grade",
+      role: "The Counselor",
+      description: "Trading lectures and top-down control for active listening and guiding wisdom."
+    },
+    {
+      number: 5,
+      title: "High School & Adulthood",
+      ages: "Ages 13-18+",
+      stage: "Entering 9th Grade & Beyond",
+      role: "The Consultant",
+      description: "Moving from direct authority to an on-call advisor, respecting their growing independence."
+    }
+  ];
+
+  return (
+    <div style={{ paddingTop: '80px' }}>
+      {/* Hero Section */}
+      <section style={styles.guideHeroSection}>
+        <div style={styles.sectionContainer}>
+          <span style={styles.sectionLabel}>Concord Parent Promotion Guide</span>
+          <h1 style={styles.guideTitle}>Growing Up in Grace</h1>
+          <p style={styles.guideSubtitle}>A Parent's Milestone, Screen, & Grade Transition Guide</p>
+          
+          <div style={styles.guideQuote}>
+            <p style={styles.quoteText}>"Train up a child in the way he should go; even when he is old he will not depart from it."</p>
+            <p style={styles.quoteRef}>Proverbs 22:6</p>
+          </div>
+          
+          <a 
+            href="/growing-up-in-grace.pdf" 
+            download
+            style={styles.downloadButton}
+          >
+            Download Complete Guide (PDF)
+          </a>
+        </div>
+      </section>
+
+      {/* Five Phases Section */}
+      <section style={styles.phasesSection}>
+        <div style={styles.sectionContainer}>
+          <h2 style={styles.phasesSectionTitle}>The Five Phases</h2>
+          <p style={styles.phasesIntro}>Each phase of your child's development calls for a different parenting posture. This guide helps you understand what to expect and how to respond with grace.</p>
+          
+          <div style={styles.phasesGrid}>
+            {phases.map((phase) => (
+              <div key={phase.number} style={styles.phaseCard}>
+                <div style={styles.phaseNumber}>{phase.number}</div>
+                <div style={styles.phaseContent}>
+                  <h3 style={styles.phaseTitle}>{phase.title}</h3>
+                  <p style={styles.phaseAges}>{phase.ages}</p>
+                  <p style={styles.phaseStage}>{phase.stage}</p>
+                  <div style={styles.phaseRoleBox}>
+                    <span style={styles.phaseRoleLabel}>Your Posture:</span>
+                    <span style={styles.phaseRole}>{phase.role}</span>
+                  </div>
+                  <p style={styles.phaseDescription}>{phase.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What's Inside Section */}
+      <section style={styles.guideContentsSection}>
+        <div style={styles.sectionContainer}>
+          <h2 style={styles.contentsSectionTitle}>What's Inside the Guide</h2>
+          <div className="contents-grid" style={styles.contentsGrid}>
+            <div style={styles.contentItem}>
+              <div style={styles.contentIcon}>📊</div>
+              <h4 style={styles.contentTitle}>Developmental Milestones</h4>
+              <p style={styles.contentText}>Neurological, physical, and social-emotional markers for each phase.</p>
+            </div>
+            <div style={styles.contentItem}>
+              <div style={styles.contentIcon}>📱</div>
+              <h4 style={styles.contentTitle}>Screen Considerations</h4>
+              <p style={styles.contentText}>Age-appropriate guidelines for technology and digital boundaries.</p>
+            </div>
+            <div style={styles.contentItem}>
+              <div style={styles.contentIcon}>🎒</div>
+              <h4 style={styles.contentTitle}>Grade Transition Dynamics</h4>
+              <p style={styles.contentText}>What to watch for and how to support each school transition.</p>
+            </div>
+            <div style={styles.contentItem}>
+              <div style={styles.contentIcon}>🤝</div>
+              <h4 style={styles.contentTitle}>How to Parent This Season</h4>
+              <p style={styles.contentText}>Practical, faith-centered strategies for each developmental stage.</p>
+            </div>
+          </div>
+          
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <a 
+              href="/growing-up-in-grace.pdf" 
+              download
+              style={styles.downloadButton}
+            >
+              Download the Full Guide
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Partnership Note */}
+      <section style={styles.partnershipNoteSection}>
+        <div style={styles.sectionContainer}>
+          <div style={styles.partnershipNote}>
+            <h4 style={styles.partnershipNoteTitle}>A Resource for Concord Families</h4>
+            <p style={styles.partnershipNoteText}>
+              This guide is brought to you through our intentional partnership with Peak Wellness Centers, PLLC. 
+              Located directly on the campus of First Baptist Concord and Concord Christian School, Peak provides 
+              seamlessly integrated, clinically excellent, and spiritually aligned care for our families.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section style={styles.ctaSection}>
+        <div style={styles.sectionContainer}>
+          <h2 style={styles.ctaTitle}>Need Support Along the Way?</h2>
+          <p style={styles.ctaText}>Our counselors are here to help you navigate each season of parenting.</p>
+          <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
+            Contact Us
+          </button>
+          <p style={{ marginTop: '20px', color: 'rgba(255,255,255,0.8)', fontSize: '15px' }}>
+            {config.phone} • {config.email}
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+};
+
 // PRIVACY POLICY PAGE (Standalone for SMS compliance)
 const PrivacyPolicyPage = () => {
   return (
@@ -1267,6 +1434,7 @@ const App = () => {
           .testimonials-grid { grid-template-columns: 1fr !important; }
           .insurance-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .rights-grid { grid-template-columns: 1fr !important; }
+          .contents-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         
         @media (max-width: 768px) {
@@ -1280,6 +1448,7 @@ const App = () => {
           .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .location-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .contents-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .insurance-grid { grid-template-columns: 1fr !important; }
           
           .service-card-large {
@@ -1374,6 +1543,7 @@ const App = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/contact-us" element={<ContactPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/resources/growing-up-in-grace" element={<GrowingUpInGracePage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         </Routes>
       </main>
@@ -2399,6 +2569,218 @@ const styles = {
     fontSize: '15px',
     color: '#4A5B52',
     lineHeight: '1.8'
+  },
+
+  // Growing Up in Grace Page
+  guideHeroSection: {
+    padding: '80px 32px',
+    background: 'linear-gradient(180deg, #F7F5F0 0%, #FFFDF9 100%)',
+    textAlign: 'center'
+  },
+  guideTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 'clamp(36px, 6vw, 56px)',
+    fontWeight: '500',
+    color: '#2D3B35',
+    marginBottom: '12px'
+  },
+  guideSubtitle: {
+    fontSize: '18px',
+    color: '#5A6B62',
+    fontStyle: 'italic',
+    marginBottom: '40px'
+  },
+  guideQuote: {
+    background: 'white',
+    padding: '32px 40px',
+    borderRadius: '16px',
+    maxWidth: '600px',
+    margin: '0 auto 40px',
+    boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)'
+  },
+  quoteText: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: '20px',
+    fontStyle: 'italic',
+    color: '#2D3B35',
+    lineHeight: '1.6',
+    marginBottom: '12px'
+  },
+  quoteRef: {
+    fontSize: '13px',
+    fontWeight: '600',
+    color: '#5B8A72',
+    letterSpacing: '2px',
+    textTransform: 'uppercase'
+  },
+  downloadButton: {
+    display: 'inline-block',
+    background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
+    color: 'white',
+    padding: '16px 32px',
+    borderRadius: '30px',
+    fontSize: '16px',
+    fontWeight: '600',
+    textDecoration: 'none',
+    transition: 'all 0.3s ease',
+    boxShadow: '0 4px 15px rgba(91, 138, 114, 0.3)'
+  },
+  phasesSection: {
+    padding: '80px 32px',
+    background: '#FFFDF9'
+  },
+  phasesSectionTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: '32px',
+    fontWeight: '600',
+    color: '#2D3B35',
+    textAlign: 'center',
+    marginBottom: '16px'
+  },
+  phasesIntro: {
+    fontSize: '16px',
+    color: '#5A6B62',
+    textAlign: 'center',
+    maxWidth: '600px',
+    margin: '0 auto 48px',
+    lineHeight: '1.7'
+  },
+  phasesGrid: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '20px',
+    maxWidth: '900px',
+    margin: '0 auto'
+  },
+  phaseCard: {
+    display: 'flex',
+    gap: '24px',
+    background: 'white',
+    padding: '28px 32px',
+    borderRadius: '16px',
+    boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)',
+    border: '1px solid rgba(45, 80, 72, 0.06)',
+    alignItems: 'flex-start'
+  },
+  phaseNumber: {
+    width: '48px',
+    height: '48px',
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
+    color: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '20px',
+    fontWeight: '600',
+    flexShrink: 0
+  },
+  phaseContent: {
+    flex: 1
+  },
+  phaseTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: '24px',
+    fontWeight: '600',
+    color: '#2D3B35',
+    marginBottom: '4px'
+  },
+  phaseAges: {
+    fontSize: '15px',
+    fontWeight: '600',
+    color: '#5B8A72',
+    marginBottom: '4px'
+  },
+  phaseStage: {
+    fontSize: '14px',
+    color: '#7A8B82',
+    marginBottom: '12px'
+  },
+  phaseRoleBox: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    background: 'rgba(91, 138, 114, 0.1)',
+    padding: '6px 14px',
+    borderRadius: '20px',
+    marginBottom: '12px'
+  },
+  phaseRoleLabel: {
+    fontSize: '12px',
+    color: '#5A6B62'
+  },
+  phaseRole: {
+    fontSize: '13px',
+    fontWeight: '600',
+    color: '#2D5048'
+  },
+  phaseDescription: {
+    fontSize: '14px',
+    color: '#5A6B62',
+    lineHeight: '1.6'
+  },
+  guideContentsSection: {
+    padding: '80px 32px',
+    background: 'linear-gradient(180deg, #F7F5F0 0%, #FFFDF9 100%)'
+  },
+  contentsSectionTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: '32px',
+    fontWeight: '600',
+    color: '#2D3B35',
+    textAlign: 'center',
+    marginBottom: '48px'
+  },
+  contentsGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '24px',
+    maxWidth: '1000px',
+    margin: '0 auto'
+  },
+  contentItem: {
+    textAlign: 'center',
+    padding: '24px 20px'
+  },
+  contentIcon: {
+    fontSize: '32px',
+    marginBottom: '16px'
+  },
+  contentTitle: {
+    fontSize: '16px',
+    fontWeight: '600',
+    color: '#2D3B35',
+    marginBottom: '8px'
+  },
+  contentText: {
+    fontSize: '14px',
+    color: '#5A6B62',
+    lineHeight: '1.6'
+  },
+  partnershipNoteSection: {
+    padding: '60px 32px',
+    background: '#FFFDF9'
+  },
+  partnershipNote: {
+    background: 'rgba(91, 138, 114, 0.08)',
+    padding: '32px 40px',
+    borderRadius: '16px',
+    maxWidth: '800px',
+    margin: '0 auto',
+    borderLeft: '4px solid #5B8A72'
+  },
+  partnershipNoteTitle: {
+    fontSize: '14px',
+    fontWeight: '700',
+    color: '#5B8A72',
+    letterSpacing: '2px',
+    textTransform: 'uppercase',
+    marginBottom: '12px'
+  },
+  partnershipNoteText: {
+    fontSize: '15px',
+    color: '#4A5B52',
+    lineHeight: '1.7'
   },
 
   contactPageForm: {
