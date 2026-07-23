@@ -1103,7 +1103,7 @@ const GrowingUpInGracePage = () => {
       title: "Pre-Adolescence",
       ages: "Ages 8-10",
       stage: "Entering 3rd - 5th Grade",
-      role: "The Coach",
+      role: "The Captain",
       description: "Shifting from micromanagement to protecting your relational connection."
     },
     {
