@@ -1032,8 +1032,76 @@ const ResourcesPage = () => {
         </div>
       </section>
 
+      {/* Parenting Resources Section */}
+      <section id="parenting" style={{ ...styles.resourceSection, background: 'linear-gradient(180deg, #F7F5F0 0%, #FFFDF9 100%)' }}>
+        <div style={styles.sectionContainer}>
+          <h2 style={styles.resourceSectionTitle}>Parenting Resources</h2>
+          <p style={styles.resourceSectionSubtitle}>Practical guides to support your family's journey.</p>
+
+          <Link to="/resources/growing-up-in-grace" style={{ textDecoration: 'none' }}>
+            <div style={{
+              background: '#FFFDF9',
+              borderRadius: '16px',
+              padding: '32px',
+              boxShadow: '0 4px 20px rgba(45, 80, 72, 0.08)',
+              border: '1px solid #A8C6B6',
+              maxWidth: '600px',
+              margin: '0 auto',
+              cursor: 'pointer',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)';
+              e.currentTarget.style.boxShadow = '0 8px 30px rgba(45, 80, 72, 0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(45, 80, 72, 0.08)';
+            }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}>
+                  <span style={{ fontSize: '28px' }}>📖</span>
+                </div>
+                <div>
+                  <h3 style={{
+                    color: '#2D5048',
+                    fontSize: '1.3rem',
+                    marginBottom: '8px',
+                    fontWeight: '600'
+                  }}>Growing Up in Grace</h3>
+                  <p style={{
+                    color: '#4A5B52',
+                    fontSize: '0.95rem',
+                    lineHeight: '1.6',
+                    margin: 0
+                  }}>
+                    A 5-phase parenting guide from early childhood through high school.
+                    Learn how to adapt your role as your child grows.
+                  </p>
+                </div>
+                <div style={{
+                  color: '#5B8A72',
+                  fontSize: '24px',
+                  marginLeft: 'auto'
+                }}>→</div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* Privacy Policy Section */}
-      <section id="privacy" style={{ ...styles.resourceSection, background: 'linear-gradient(180deg, #F7F5F0 0%, #FFFDF9 100%)' }}>
+      <section id="privacy" style={styles.resourceSection}>
         <div style={styles.sectionContainer}>
           <h2 style={styles.resourceSectionTitle}>Privacy Policy</h2>
           
@@ -1103,7 +1171,7 @@ const GrowingUpInGracePage = () => {
       title: "Pre-Adolescence",
       ages: "Ages 8-10",
       stage: "Entering 3rd - 5th Grade",
-      role: "The Captain",
+      role: "The Coach",
       description: "Shifting from micromanagement to protecting your relational connection."
     },
     {
