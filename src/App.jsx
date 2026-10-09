@@ -630,6 +630,25 @@ const BioPage = () => {
               </div>
             )}
 
+            {/* Specialties */}
+            {member.bio.specialties && (
+              <div style={styles.bioSection}>
+                <h3 style={styles.bioSectionTitle}>Areas of Focus</h3>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                  {member.bio.specialties.map((item, i) => (
+                    <span key={i} style={{
+                      background: '#F7F5F0',
+                      color: '#2D5048',
+                      padding: '8px 16px',
+                      borderRadius: '20px',
+                      fontSize: '0.9rem',
+                      border: '1px solid #A8C6B6'
+                    }}>{item}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Personal Note (for Morgan) */}
             {member.bio.personal && (
               <div style={styles.bioSection}>
