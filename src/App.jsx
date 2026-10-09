@@ -498,9 +498,18 @@ const TeamPage = () => {
 
       <section style={{ padding: '60px 32px', background: '#FFFDF9' }}>
         <div style={styles.sectionContainer}>
+          {/* First row - 3 members */}
           <div className="team-grid-3" style={styles.teamGridPage}>
-            {config.team.map((member, index) => (
+            {config.team.slice(0, 3).map((member, index) => (
               <TeamMemberCard key={index} member={member} />
+            ))}
+          </div>
+          {/* Second row - 2 members centered */}
+          <div className="team-grid-2" style={styles.teamGridPageRow2}>
+            {config.team.slice(3).map((member, index) => (
+              <div key={index + 3} style={{ width: 'calc((900px - 48px) / 3)' }}>
+                <TeamMemberCard member={member} />
+              </div>
             ))}
           </div>
         </div>
@@ -1518,6 +1527,8 @@ const App = () => {
           .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .services-grid-5 .service-card-photo { width: calc(50% - 12px) !important; max-width: none !important; }
           .team-grid, .team-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+          .team-grid-2 { flex-wrap: wrap !important; }
+          .team-grid-2 > div { width: calc(50% - 12px) !important; min-width: 200px !important; }
           .testimonials-grid { grid-template-columns: 1fr !important; }
           .insurance-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .rights-grid { grid-template-columns: 1fr !important; }
@@ -1532,6 +1543,8 @@ const App = () => {
           .services-grid-5 { flex-direction: column !important; align-items: center !important; }
           .services-grid-5 .service-card-photo { width: 100% !important; max-width: 100% !important; min-width: auto !important; }
           .team-grid, .team-grid-3 { grid-template-columns: 1fr !important; }
+          .team-grid-2 { flex-direction: column !important; align-items: center !important; }
+          .team-grid-2 > div { width: 100% !important; max-width: 300px !important; }
           .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .location-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -2193,10 +2206,17 @@ const styles = {
   // Team Page
   teamGridPage: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
+    gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '24px',
-    maxWidth: '1000px',
+    maxWidth: '900px',
     margin: '0 auto'
+  },
+  teamGridPageRow2: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '24px',
+    maxWidth: '900px',
+    margin: '24px auto 0'
   },
   teamCardPage: {
     textAlign: 'center',
