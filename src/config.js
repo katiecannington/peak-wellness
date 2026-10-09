@@ -112,6 +112,26 @@ In 2025, Kevin helped in the development of Peak Wellness Centers, PLLC with All
       }
     },
     {
+      name: "Tara Deer, LMSW, MBA",
+      role: "Clinical Counselor",
+      specialty: "Licensed Master Social Worker (TN)",
+      image: "/tara_picture.png",
+      slug: "tara-deer",
+      credentials: "Licensed Master Social Worker (TN), Licensed School Social Worker",
+      licenses: "MSW - University of Tennessee at Knoxville (2017), MBA - University of Tennessee at Martin (2024)",
+      bio: {
+        summary: `With 16 years of dedicated experience in child welfare, I specialize in supporting clients impacted by child abuse, neglect, youth homelessness, child migration, and human trafficking. I hold a Master of Social Work (MSW) from the University of Tennessee at Knoxville (2017) and a Master of Business Administration (MBA) from the University of Tennessee at Martin (2024). I am a Licensed Master Social Worker (LMSW) and Licensed School Social Worker.`,
+        education: [
+          "Master of Social Work (MSW) from the University of Tennessee at Knoxville (2017)",
+          "Master of Business Administration (MBA) from the University of Tennessee at Martin (2024)",
+          "Licensed Master Social Worker (LMSW)",
+          "Licensed School Social Worker"
+        ],
+        approach: `In my therapeutic practice, I serve children, adolescents, and adults navigating stress, anxiety, depression, trauma and life transitions. My approach to therapy centers on leveraging individual strengths, implementing practical solutions, and thoughtfully integrating Biblical truths into the healing process.`,
+        specialties: ["Child Welfare", "Trauma", "Anxiety", "Depression", "Life Transitions", "Youth & Adolescent Support"]
+      }
+    },
+    {
       name: "Allen Williams",
       role: "Chief Experience Officer",
       specialty: "Operations",
