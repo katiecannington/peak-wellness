@@ -1448,9 +1448,9 @@ const ThrivingTheHolidaysPage = () => {
         background: 'linear-gradient(135deg, #2D5048 0%, #4A6B5D 100%)'
       }}>
         <div style={styles.sectionContainer}>
-          <span style={styles.sectionLabel}>A Gospel-Centered Guide</span>
-          <h1 style={styles.guideTitle}>Thriving the Holidays</h1>
-          <p style={styles.guideSubtitle}>Seasonal rhythms, heart reflection, and grace for every age at home.</p>
+          <span style={{ ...styles.sectionLabel, color: 'rgba(255,255,255,0.85)' }}>A Gospel-Centered Guide</span>
+          <h1 style={{ ...styles.guideTitle, color: '#FFFDF9' }}>Thriving the Holidays</h1>
+          <p style={{ ...styles.guideSubtitle, color: 'rgba(255,255,255,0.85)' }}>Seasonal rhythms, heart reflection, and grace for every age at home.</p>
 
           <div style={styles.guideQuote}>
             <p style={styles.quoteText}>"Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid."</p>
