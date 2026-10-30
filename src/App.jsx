@@ -1066,65 +1066,87 @@ const ResourcesPage = () => {
           <h2 style={styles.resourceSectionTitle}>Parenting Resources</h2>
           <p style={styles.resourceSectionSubtitle}>Practical guides to support your family's journey.</p>
 
-          <Link to="/resources/growing-up-in-grace" style={{ textDecoration: 'none' }}>
-            <div style={{
-              background: '#FFFDF9',
-              borderRadius: '16px',
-              padding: '32px',
-              boxShadow: '0 4px 20px rgba(45, 80, 72, 0.08)',
-              border: '1px solid #A8C6B6',
-              maxWidth: '600px',
-              margin: '0 auto',
-              cursor: 'pointer',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-4px)';
-              e.currentTarget.style.boxShadow = '0 8px 30px rgba(45, 80, 72, 0.15)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 20px rgba(45, 80, 72, 0.08)';
-            }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div className="resource-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', maxWidth: '900px', margin: '0 auto' }}>
+            <Link to="/resources/growing-up-in-grace" style={{ textDecoration: 'none' }}>
+              <div style={{
+                background: '#FFFDF9',
+                borderRadius: '16px',
+                padding: '28px',
+                boxShadow: '0 4px 20px rgba(45, 80, 72, 0.08)',
+                border: '1px solid #A8C6B6',
+                cursor: 'pointer',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                height: '100%'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(45, 80, 72, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(45, 80, 72, 0.08)';
+              }}
+              >
                 <div style={{
-                  width: '60px',
-                  height: '60px',
+                  width: '50px',
+                  height: '50px',
                   borderRadius: '12px',
                   background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  flexShrink: 0
+                  marginBottom: '16px'
                 }}>
-                  <span style={{ fontSize: '28px' }}>📖</span>
+                  <span style={{ fontSize: '24px' }}>📖</span>
                 </div>
-                <div>
-                  <h3 style={{
-                    color: '#2D5048',
-                    fontSize: '1.3rem',
-                    marginBottom: '8px',
-                    fontWeight: '600'
-                  }}>Growing Up in Grace</h3>
-                  <p style={{
-                    color: '#4A5B52',
-                    fontSize: '0.95rem',
-                    lineHeight: '1.6',
-                    margin: 0
-                  }}>
-                    A 5-phase parenting guide from early childhood through high school.
-                    Learn how to adapt your role as your child grows.
-                  </p>
-                </div>
-                <div style={{
-                  color: '#5B8A72',
-                  fontSize: '24px',
-                  marginLeft: 'auto'
-                }}>→</div>
+                <h3 style={{ color: '#2D5048', fontSize: '1.2rem', marginBottom: '8px', fontWeight: '600' }}>Growing Up in Grace</h3>
+                <p style={{ color: '#4A5B52', fontSize: '0.9rem', lineHeight: '1.6', margin: '0 0 12px' }}>
+                  A 5-phase parenting guide from early childhood through high school. Learn how to adapt your role as your child grows.
+                </p>
+                <span style={{ color: '#5B8A72', fontSize: '0.9rem', fontWeight: '500' }}>View Guide →</span>
               </div>
-            </div>
-          </Link>
+            </Link>
+
+            <Link to="/resources/thriving-the-holidays" style={{ textDecoration: 'none' }}>
+              <div style={{
+                background: '#FFFDF9',
+                borderRadius: '16px',
+                padding: '28px',
+                boxShadow: '0 4px 20px rgba(45, 80, 72, 0.08)',
+                border: '1px solid #A8C6B6',
+                cursor: 'pointer',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                height: '100%'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(45, 80, 72, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(45, 80, 72, 0.08)';
+              }}
+              >
+                <div style={{
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #C4A962 0%, #8B7355 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '16px'
+                }}>
+                  <span style={{ fontSize: '24px' }}>🎄</span>
+                </div>
+                <h3 style={{ color: '#2D5048', fontSize: '1.2rem', marginBottom: '8px', fontWeight: '600' }}>Thriving the Holidays</h3>
+                <p style={{ color: '#4A5B52', fontSize: '0.9rem', lineHeight: '1.6', margin: '0 0 12px' }}>
+                  A gospel-centered guide for navigating the holiday season with peace, intention, and grace for every age.
+                </p>
+                <span style={{ color: '#5B8A72', fontSize: '0.9rem', fontWeight: '500' }}>View Guide →</span>
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -1340,6 +1362,260 @@ const GrowingUpInGracePage = () => {
   );
 };
 
+// THRIVING THE HOLIDAYS PAGE
+const ThrivingTheHolidaysPage = () => {
+  const navigate = useNavigate();
+
+  const phases = [
+    {
+      number: 1,
+      title: "Early Childhood",
+      ages: "Ages 3-4½",
+      stage: "Preschool / Pre-K",
+      role: "The Commander",
+      description: "Loving, steady authority providing a safe perimeter of routines amid holiday chaos."
+    },
+    {
+      number: 2,
+      title: "Middle Childhood",
+      ages: "Ages 5-7",
+      stage: "Kindergarten - 2nd Grade",
+      role: "The Coach",
+      description: "Standing on the sidelines to guide, encourage, and prompt grace and sportsmanship during holiday play."
+    },
+    {
+      number: 3,
+      title: "Pre-Adolescence",
+      ages: "Ages 8-10",
+      stage: "3rd - 5th Grade",
+      role: "The Captain",
+      description: "Protecting relational equity with your pre-teen amid peer comparison and holiday material pressures."
+    },
+    {
+      number: 4,
+      title: "Early Adolescence",
+      ages: "Ages 11-12",
+      stage: "6th - 7th Grade",
+      role: "The Counselor",
+      description: "Trading lectures and top-down control for active listening, private guidance, and dignity."
+    },
+    {
+      number: 5,
+      title: "High School & Adulthood",
+      ages: "Ages 13-18+",
+      stage: "9th Grade & Beyond",
+      role: "The Consultant",
+      description: "Moving from direct authority to an on-call advisor, respecting their independence and modeling gospel rest."
+    }
+  ];
+
+  const frameworks = [
+    {
+      number: 1,
+      title: "Heart Mirror",
+      author: "Dan Allender",
+      description: "Recognize that a child's holiday meltdown is often a mirror exposing our own unhealed triggers, fears of judgment, and idols of control or image.",
+      question: "What is my child exposing in ME?"
+    },
+    {
+      number: 2,
+      title: "Phase Wisdom",
+      author: "Daystar Counseling",
+      description: "Honor your child's emotional and neurological limits as schedules, diets, and environments shift.",
+      question: "What does my child need in THIS season?"
+    },
+    {
+      number: 3,
+      title: "Household Liturgies",
+      author: "Justin Whitmel Earley",
+      description: "Protect ordinary, repeatable rhythms of prayer, mealtime, and rest that form our hearts in the gospel.",
+      question: "What spiritual anchors do we protect?"
+    },
+    {
+      number: 4,
+      title: "Habit Mechanics",
+      author: "James Clear",
+      description: "Use habit stacking, environmental design, and micro-steps to lower friction for peace and increase friction for chaos.",
+      question: "How do we practically execute this?"
+    }
+  ];
+
+  return (
+    <div style={{ paddingTop: '80px' }}>
+      {/* Hero Section */}
+      <section style={{
+        ...styles.guideHeroSection,
+        background: 'linear-gradient(135deg, #2D5048 0%, #4A6B5D 100%)'
+      }}>
+        <div style={styles.sectionContainer}>
+          <span style={styles.sectionLabel}>A Gospel-Centered Guide</span>
+          <h1 style={styles.guideTitle}>Thriving the Holidays</h1>
+          <p style={styles.guideSubtitle}>Seasonal rhythms, heart reflection, and grace for every age at home.</p>
+
+          <div style={styles.guideQuote}>
+            <p style={styles.quoteText}>"Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid."</p>
+            <p style={styles.quoteRef}>John 14:27</p>
+          </div>
+
+          <a
+            href="/thriving-the-holidays.pdf"
+            download
+            style={styles.downloadButton}
+          >
+            Download Complete Guide (PDF)
+          </a>
+        </div>
+      </section>
+
+      {/* Holiday Formation Framework */}
+      <section style={{ padding: '80px 32px', background: '#FFFDF9' }}>
+        <div style={styles.sectionContainer}>
+          <h2 style={styles.phasesSectionTitle}>The Holiday Formation Framework</h2>
+          <p style={styles.phasesIntro}>When family traditions, travel schedules, and holiday expectations hit, our underlying household scaffolding crumbles. To navigate the season with peace, we integrate four frameworks.</p>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '24px',
+            maxWidth: '900px',
+            margin: '40px auto 0'
+          }} className="frameworks-grid">
+            {frameworks.map((fw) => (
+              <div key={fw.number} style={{
+                background: 'white',
+                borderRadius: '16px',
+                padding: '28px',
+                boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)',
+                border: '1px solid rgba(45, 80, 72, 0.08)',
+                borderLeft: '4px solid #C4A962'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '16px' }}>
+                  <div style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    background: '#C4A962',
+                    color: 'white',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: '600',
+                    fontSize: '1rem',
+                    flexShrink: 0
+                  }}>{fw.number}</div>
+                  <div>
+                    <h3 style={{ color: '#2D5048', fontSize: '1.1rem', fontWeight: '600', margin: 0 }}>{fw.title}</h3>
+                    <p style={{ color: '#5B8A72', fontSize: '0.85rem', margin: '4px 0 0', fontStyle: 'italic' }}>{fw.author}</p>
+                  </div>
+                </div>
+                <p style={{ color: '#4A5B52', fontSize: '0.95rem', lineHeight: '1.6', margin: '0 0 12px' }}>{fw.description}</p>
+                <p style={{ color: '#2D5048', fontSize: '0.9rem', fontStyle: 'italic', margin: 0 }}>Ask: "{fw.question}"</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Five Phases Section */}
+      <section style={styles.phasesSection}>
+        <div style={styles.sectionContainer}>
+          <h2 style={styles.phasesSectionTitle}>Phase-Based Holiday Guidance</h2>
+          <p style={styles.phasesIntro}>Each phase of your child's development requires a different approach during the holidays. This guide provides specific strategies for navigating this season with each age group.</p>
+
+          <div style={styles.phasesGrid}>
+            {phases.map((phase) => (
+              <div key={phase.number} style={styles.phaseCard}>
+                <div style={styles.phaseNumber}>{phase.number}</div>
+                <div style={styles.phaseContent}>
+                  <h3 style={styles.phaseTitle}>{phase.title}</h3>
+                  <p style={styles.phaseAges}>{phase.ages}</p>
+                  <p style={styles.phaseStage}>{phase.stage}</p>
+                  <div style={styles.phaseRoleBox}>
+                    <span style={styles.phaseRoleLabel}>Your Posture:</span>
+                    <span style={styles.phaseRole}>{phase.role}</span>
+                  </div>
+                  <p style={styles.phaseDescription}>{phase.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What's Inside Section */}
+      <section style={styles.guideContentsSection}>
+        <div style={styles.sectionContainer}>
+          <h2 style={styles.contentsSectionTitle}>What's Inside the Guide</h2>
+          <div className="contents-grid" style={styles.contentsGrid}>
+            <div style={styles.contentItem}>
+              <div style={styles.contentIcon}>👑</div>
+              <h4 style={styles.contentTitle}>The Infant King & the Adult Soul</h4>
+              <p style={styles.contentText}>Re-centering our heart posture in the gospel story before leading our homes.</p>
+            </div>
+            <div style={styles.contentItem}>
+              <div style={styles.contentIcon}>💒</div>
+              <h4 style={styles.contentTitle}>Protecting Marriage</h4>
+              <p style={styles.contentText}>Covenant friendship, mutual submission, and gospel service during the holiday storm.</p>
+            </div>
+            <div style={styles.contentItem}>
+              <div style={styles.contentIcon}>🎯</div>
+              <h4 style={styles.contentTitle}>Core Commitments</h4>
+              <p style={styles.contentText}>Honor Him, Connect Intentionally, Communicate His Love as your household standard.</p>
+            </div>
+            <div style={styles.contentItem}>
+              <div style={styles.contentIcon}>💔</div>
+              <h4 style={styles.contentTitle}>Special Considerations</h4>
+              <p style={styles.contentText}>Guidance for navigating grief, loss, and communicating family expectations.</p>
+            </div>
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <a
+              href="/thriving-the-holidays.pdf"
+              download
+              style={styles.downloadButton}
+            >
+              Download the Full Guide
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Partnership Note */}
+      <section style={styles.partnershipNoteSection}>
+        <div style={styles.sectionContainer}>
+          <div style={styles.partnershipNote}>
+            <h4 style={styles.partnershipNoteTitle}>A Resource for Concord Families</h4>
+            <p style={styles.partnershipNoteText}>
+              Peak Wellness Centers, PLLC is located directly on the campus of First Baptist Concord and Concord Christian School,
+              providing integrated, clinically excellent, and spiritually aligned care for our families.
+            </p>
+            <p style={{ marginTop: '16px', fontSize: '0.9rem', color: '#4A5B52' }}>
+              <strong>Built on:</strong> Dan Allender, <em>The Heart of Parenting</em> | Daystar Counseling Ministries |
+              Justin Whitmel Earley, <em>Habits of the Household</em> | James Clear, <em>Atomic Habits</em> |
+              Timothy & Kathy Keller, <em>The Meaning of Marriage</em>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section style={styles.ctaSection}>
+        <div style={styles.sectionContainer}>
+          <h2 style={styles.ctaTitle}>Need Support This Season?</h2>
+          <p style={styles.ctaText}>Our counselors are here to help you navigate the holidays with peace and intention.</p>
+          <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
+            Contact Us
+          </button>
+          <p style={{ marginTop: '20px', color: 'rgba(255,255,255,0.8)', fontSize: '15px' }}>
+            {config.phone} • {config.email}
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+};
+
 // PRIVACY POLICY PAGE (Standalone for SMS compliance)
 const PrivacyPolicyPage = () => {
   return (
@@ -1533,8 +1809,10 @@ const App = () => {
           .insurance-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .rights-grid { grid-template-columns: 1fr !important; }
           .contents-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .resource-cards-grid { grid-template-columns: 1fr !important; max-width: 500px !important; }
+          .frameworks-grid { grid-template-columns: 1fr !important; }
         }
-        
+
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-toggle { display: flex !important; }
@@ -1644,6 +1922,7 @@ const App = () => {
           <Route path="/contact-us" element={<ContactPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/resources/growing-up-in-grace" element={<GrowingUpInGracePage />} />
+          <Route path="/resources/thriving-the-holidays" element={<ThrivingTheHolidaysPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         </Routes>
       </main>
