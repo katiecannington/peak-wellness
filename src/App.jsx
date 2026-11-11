@@ -183,6 +183,21 @@ const Footer = () => (
               {config.address.street}<br/>
               {config.address.city}, {config.address.state} {config.address.zip}
             </p>
+            <a
+              href="https://share.google/wOymr8f9ioNgDgETo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link"
+              style={{ ...styles.footerLink, display: 'flex', alignItems: 'center', gap: '6px', marginTop: '8px' }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              Find Us on Google
+            </a>
           </div>
         </div>
       </div>
@@ -498,18 +513,9 @@ const TeamPage = () => {
 
       <section style={{ padding: '60px 32px', background: '#FFFDF9' }}>
         <div style={styles.sectionContainer}>
-          {/* First row - 3 members */}
           <div className="team-grid-3" style={styles.teamGridPage}>
-            {config.team.slice(0, 3).map((member, index) => (
+            {config.team.map((member, index) => (
               <TeamMemberCard key={index} member={member} />
-            ))}
-          </div>
-          {/* Second row - 2 members centered */}
-          <div className="team-grid-2" style={styles.teamGridPageRow2}>
-            {config.team.slice(3).map((member, index) => (
-              <div key={index + 3} style={{ width: 'calc((900px - 48px) / 3)' }}>
-                <TeamMemberCard member={member} />
-              </div>
             ))}
           </div>
         </div>
@@ -636,25 +642,6 @@ const BioPage = () => {
               <div style={styles.bioSection}>
                 <h3 style={styles.bioSectionTitle}>Approach</h3>
                 <p style={styles.bioParagraph}>{member.bio.approach}</p>
-              </div>
-            )}
-
-            {/* Specialties */}
-            {member.bio.specialties && (
-              <div style={styles.bioSection}>
-                <h3 style={styles.bioSectionTitle}>Areas of Focus</h3>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                  {member.bio.specialties.map((item, i) => (
-                    <span key={i} style={{
-                      background: '#F7F5F0',
-                      color: '#2D5048',
-                      padding: '8px 16px',
-                      borderRadius: '20px',
-                      fontSize: '0.9rem',
-                      border: '1px solid #A8C6B6'
-                    }}>{item}</span>
-                  ))}
-                </div>
               </div>
             )}
 
@@ -921,14 +908,30 @@ const ContactPage = () => {
                 <p><strong>{config.address.street}</strong></p>
                 <p>{config.address.city}, {config.address.state} {config.address.zip}</p>
               </div>
-              <a 
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${config.address.street}, ${config.address.city}, ${config.address.state} ${config.address.zip}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.directionsLink}
-              >
-                Get Directions →
-              </a>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${config.address.street}, ${config.address.city}, ${config.address.state} ${config.address.zip}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={styles.directionsLink}
+                >
+                  Get Directions →
+                </a>
+                <a
+                  href="https://share.google/wOymr8f9ioNgDgETo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ ...styles.directionsLink, display: 'flex', alignItems: 'center', gap: '8px' }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                  </svg>
+                  View on Google
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -1066,87 +1069,65 @@ const ResourcesPage = () => {
           <h2 style={styles.resourceSectionTitle}>Parenting Resources</h2>
           <p style={styles.resourceSectionSubtitle}>Practical guides to support your family's journey.</p>
 
-          <div className="resource-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', maxWidth: '900px', margin: '0 auto' }}>
-            <Link to="/resources/growing-up-in-grace" style={{ textDecoration: 'none' }}>
-              <div style={{
-                background: '#FFFDF9',
-                borderRadius: '16px',
-                padding: '28px',
-                boxShadow: '0 4px 20px rgba(45, 80, 72, 0.08)',
-                border: '1px solid #A8C6B6',
-                cursor: 'pointer',
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                height: '100%'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 8px 30px rgba(45, 80, 72, 0.15)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(45, 80, 72, 0.08)';
-              }}
-              >
+          <Link to="/resources/growing-up-in-grace" style={{ textDecoration: 'none' }}>
+            <div style={{
+              background: '#FFFDF9',
+              borderRadius: '16px',
+              padding: '32px',
+              boxShadow: '0 4px 20px rgba(45, 80, 72, 0.08)',
+              border: '1px solid #A8C6B6',
+              maxWidth: '600px',
+              margin: '0 auto',
+              cursor: 'pointer',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)';
+              e.currentTarget.style.boxShadow = '0 8px 30px rgba(45, 80, 72, 0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(45, 80, 72, 0.08)';
+            }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                 <div style={{
-                  width: '50px',
-                  height: '50px',
+                  width: '60px',
+                  height: '60px',
                   borderRadius: '12px',
                   background: 'linear-gradient(135deg, #5B8A72 0%, #2D5048 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '16px'
+                  flexShrink: 0
                 }}>
-                  <span style={{ fontSize: '24px' }}>📖</span>
+                  <span style={{ fontSize: '28px' }}>📖</span>
                 </div>
-                <h3 style={{ color: '#2D5048', fontSize: '1.2rem', marginBottom: '8px', fontWeight: '600' }}>Growing Up in Grace</h3>
-                <p style={{ color: '#4A5B52', fontSize: '0.9rem', lineHeight: '1.6', margin: '0 0 12px' }}>
-                  A 5-phase parenting guide from early childhood through high school. Learn how to adapt your role as your child grows.
-                </p>
-                <span style={{ color: '#5B8A72', fontSize: '0.9rem', fontWeight: '500' }}>View Guide →</span>
-              </div>
-            </Link>
-
-            <Link to="/resources/thriving-the-holidays" style={{ textDecoration: 'none' }}>
-              <div style={{
-                background: '#FFFDF9',
-                borderRadius: '16px',
-                padding: '28px',
-                boxShadow: '0 4px 20px rgba(45, 80, 72, 0.08)',
-                border: '1px solid #A8C6B6',
-                cursor: 'pointer',
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                height: '100%'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 8px 30px rgba(45, 80, 72, 0.15)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(45, 80, 72, 0.08)';
-              }}
-              >
+                <div>
+                  <h3 style={{
+                    color: '#2D5048',
+                    fontSize: '1.3rem',
+                    marginBottom: '8px',
+                    fontWeight: '600'
+                  }}>Growing Up in Grace</h3>
+                  <p style={{
+                    color: '#4A5B52',
+                    fontSize: '0.95rem',
+                    lineHeight: '1.6',
+                    margin: 0
+                  }}>
+                    A 5-phase parenting guide from early childhood through high school.
+                    Learn how to adapt your role as your child grows.
+                  </p>
+                </div>
                 <div style={{
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #C4A962 0%, #8B7355 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '16px'
-                }}>
-                  <span style={{ fontSize: '24px' }}>🎄</span>
-                </div>
-                <h3 style={{ color: '#2D5048', fontSize: '1.2rem', marginBottom: '8px', fontWeight: '600' }}>Thriving the Holidays</h3>
-                <p style={{ color: '#4A5B52', fontSize: '0.9rem', lineHeight: '1.6', margin: '0 0 12px' }}>
-                  A gospel-centered guide for navigating the holiday season with peace, intention, and grace for every age.
-                </p>
-                <span style={{ color: '#5B8A72', fontSize: '0.9rem', fontWeight: '500' }}>View Guide →</span>
+                  color: '#5B8A72',
+                  fontSize: '24px',
+                  marginLeft: 'auto'
+                }}>→</div>
               </div>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </section>
 
@@ -1362,260 +1343,6 @@ const GrowingUpInGracePage = () => {
   );
 };
 
-// THRIVING THE HOLIDAYS PAGE
-const ThrivingTheHolidaysPage = () => {
-  const navigate = useNavigate();
-
-  const phases = [
-    {
-      number: 1,
-      title: "Early Childhood",
-      ages: "Ages 3-4½",
-      stage: "Preschool / Pre-K",
-      role: "The Commander",
-      description: "Loving, steady authority providing a safe perimeter of routines amid holiday chaos."
-    },
-    {
-      number: 2,
-      title: "Middle Childhood",
-      ages: "Ages 5-7",
-      stage: "Kindergarten - 2nd Grade",
-      role: "The Coach",
-      description: "Standing on the sidelines to guide, encourage, and prompt grace and sportsmanship during holiday play."
-    },
-    {
-      number: 3,
-      title: "Pre-Adolescence",
-      ages: "Ages 8-10",
-      stage: "3rd - 5th Grade",
-      role: "The Captain",
-      description: "Protecting relational equity with your pre-teen amid peer comparison and holiday material pressures."
-    },
-    {
-      number: 4,
-      title: "Early Adolescence",
-      ages: "Ages 11-12",
-      stage: "6th - 7th Grade",
-      role: "The Counselor",
-      description: "Trading lectures and top-down control for active listening, private guidance, and dignity."
-    },
-    {
-      number: 5,
-      title: "High School & Adulthood",
-      ages: "Ages 13-18+",
-      stage: "9th Grade & Beyond",
-      role: "The Consultant",
-      description: "Moving from direct authority to an on-call advisor, respecting their independence and modeling gospel rest."
-    }
-  ];
-
-  const frameworks = [
-    {
-      number: 1,
-      title: "Heart Mirror",
-      author: "Dan Allender",
-      description: "Recognize that a child's holiday meltdown is often a mirror exposing our own unhealed triggers, fears of judgment, and idols of control or image.",
-      question: "What is my child exposing in ME?"
-    },
-    {
-      number: 2,
-      title: "Phase Wisdom",
-      author: "Daystar Counseling",
-      description: "Honor your child's emotional and neurological limits as schedules, diets, and environments shift.",
-      question: "What does my child need in THIS season?"
-    },
-    {
-      number: 3,
-      title: "Household Liturgies",
-      author: "Justin Whitmel Earley",
-      description: "Protect ordinary, repeatable rhythms of prayer, mealtime, and rest that form our hearts in the gospel.",
-      question: "What spiritual anchors do we protect?"
-    },
-    {
-      number: 4,
-      title: "Habit Mechanics",
-      author: "James Clear",
-      description: "Use habit stacking, environmental design, and micro-steps to lower friction for peace and increase friction for chaos.",
-      question: "How do we practically execute this?"
-    }
-  ];
-
-  return (
-    <div style={{ paddingTop: '80px' }}>
-      {/* Hero Section */}
-      <section style={{
-        ...styles.guideHeroSection,
-        background: 'linear-gradient(135deg, #2D5048 0%, #4A6B5D 100%)'
-      }}>
-        <div style={styles.sectionContainer}>
-          <span style={{ ...styles.sectionLabel, color: 'rgba(255,255,255,0.85)' }}>A Gospel-Centered Guide</span>
-          <h1 style={{ ...styles.guideTitle, color: '#FFFDF9' }}>Thriving the Holidays</h1>
-          <p style={{ ...styles.guideSubtitle, color: 'rgba(255,255,255,0.85)' }}>Seasonal rhythms, heart reflection, and grace for every age at home.</p>
-
-          <div style={styles.guideQuote}>
-            <p style={styles.quoteText}>"Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid."</p>
-            <p style={styles.quoteRef}>John 14:27</p>
-          </div>
-
-          <a
-            href="/thriving-the-holidays.pdf"
-            download
-            style={styles.downloadButton}
-          >
-            Download Complete Guide (PDF)
-          </a>
-        </div>
-      </section>
-
-      {/* Holiday Formation Framework */}
-      <section style={{ padding: '80px 32px', background: '#FFFDF9' }}>
-        <div style={styles.sectionContainer}>
-          <h2 style={styles.phasesSectionTitle}>The Holiday Formation Framework</h2>
-          <p style={styles.phasesIntro}>When family traditions, travel schedules, and holiday expectations hit, our underlying household scaffolding crumbles. To navigate the season with peace, we integrate four frameworks.</p>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '24px',
-            maxWidth: '900px',
-            margin: '40px auto 0'
-          }} className="frameworks-grid">
-            {frameworks.map((fw) => (
-              <div key={fw.number} style={{
-                background: 'white',
-                borderRadius: '16px',
-                padding: '28px',
-                boxShadow: '0 4px 20px rgba(45, 80, 72, 0.06)',
-                border: '1px solid rgba(45, 80, 72, 0.08)',
-                borderLeft: '4px solid #C4A962'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '16px' }}>
-                  <div style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '50%',
-                    background: '#C4A962',
-                    color: 'white',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontWeight: '600',
-                    fontSize: '1rem',
-                    flexShrink: 0
-                  }}>{fw.number}</div>
-                  <div>
-                    <h3 style={{ color: '#2D5048', fontSize: '1.1rem', fontWeight: '600', margin: 0 }}>{fw.title}</h3>
-                    <p style={{ color: '#5B8A72', fontSize: '0.85rem', margin: '4px 0 0', fontStyle: 'italic' }}>{fw.author}</p>
-                  </div>
-                </div>
-                <p style={{ color: '#4A5B52', fontSize: '0.95rem', lineHeight: '1.6', margin: '0 0 12px' }}>{fw.description}</p>
-                <p style={{ color: '#2D5048', fontSize: '0.9rem', fontStyle: 'italic', margin: 0 }}>Ask: "{fw.question}"</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Five Phases Section */}
-      <section style={styles.phasesSection}>
-        <div style={styles.sectionContainer}>
-          <h2 style={styles.phasesSectionTitle}>Phase-Based Holiday Guidance</h2>
-          <p style={styles.phasesIntro}>Each phase of your child's development requires a different approach during the holidays. This guide provides specific strategies for navigating this season with each age group.</p>
-
-          <div style={styles.phasesGrid}>
-            {phases.map((phase) => (
-              <div key={phase.number} style={styles.phaseCard}>
-                <div style={styles.phaseNumber}>{phase.number}</div>
-                <div style={styles.phaseContent}>
-                  <h3 style={styles.phaseTitle}>{phase.title}</h3>
-                  <p style={styles.phaseAges}>{phase.ages}</p>
-                  <p style={styles.phaseStage}>{phase.stage}</p>
-                  <div style={styles.phaseRoleBox}>
-                    <span style={styles.phaseRoleLabel}>Your Posture:</span>
-                    <span style={styles.phaseRole}>{phase.role}</span>
-                  </div>
-                  <p style={styles.phaseDescription}>{phase.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What's Inside Section */}
-      <section style={styles.guideContentsSection}>
-        <div style={styles.sectionContainer}>
-          <h2 style={styles.contentsSectionTitle}>What's Inside the Guide</h2>
-          <div className="contents-grid" style={styles.contentsGrid}>
-            <div style={styles.contentItem}>
-              <div style={styles.contentIcon}>👑</div>
-              <h4 style={styles.contentTitle}>The Infant King & the Adult Soul</h4>
-              <p style={styles.contentText}>Re-centering our heart posture in the gospel story before leading our homes.</p>
-            </div>
-            <div style={styles.contentItem}>
-              <div style={styles.contentIcon}>💒</div>
-              <h4 style={styles.contentTitle}>Protecting Marriage</h4>
-              <p style={styles.contentText}>Covenant friendship, mutual submission, and gospel service during the holiday storm.</p>
-            </div>
-            <div style={styles.contentItem}>
-              <div style={styles.contentIcon}>🎯</div>
-              <h4 style={styles.contentTitle}>Core Commitments</h4>
-              <p style={styles.contentText}>Honor Him, Connect Intentionally, Communicate His Love as your household standard.</p>
-            </div>
-            <div style={styles.contentItem}>
-              <div style={styles.contentIcon}>💔</div>
-              <h4 style={styles.contentTitle}>Special Considerations</h4>
-              <p style={styles.contentText}>Guidance for navigating grief, loss, and communicating family expectations.</p>
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '40px' }}>
-            <a
-              href="/thriving-the-holidays.pdf"
-              download
-              style={styles.downloadButton}
-            >
-              Download the Full Guide
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Partnership Note */}
-      <section style={styles.partnershipNoteSection}>
-        <div style={styles.sectionContainer}>
-          <div style={styles.partnershipNote}>
-            <h4 style={styles.partnershipNoteTitle}>A Resource for Concord Families</h4>
-            <p style={styles.partnershipNoteText}>
-              Peak Wellness Centers, PLLC is located directly on the campus of First Baptist Concord and Concord Christian School,
-              providing integrated, clinically excellent, and spiritually aligned care for our families.
-            </p>
-            <p style={{ marginTop: '16px', fontSize: '0.9rem', color: '#4A5B52' }}>
-              <strong>Built on:</strong> Dan Allender, <em>The Heart of Parenting</em> | Daystar Counseling Ministries |
-              Justin Whitmel Earley, <em>Habits of the Household</em> | James Clear, <em>Atomic Habits</em> |
-              Timothy & Kathy Keller, <em>The Meaning of Marriage</em>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section style={styles.ctaSection}>
-        <div style={styles.sectionContainer}>
-          <h2 style={styles.ctaTitle}>Need Support This Season?</h2>
-          <p style={styles.ctaText}>Our counselors are here to help you navigate the holidays with peace and intention.</p>
-          <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
-            Contact Us
-          </button>
-          <p style={{ marginTop: '20px', color: 'rgba(255,255,255,0.8)', fontSize: '15px' }}>
-            {config.phone} • {config.email}
-          </p>
-        </div>
-      </section>
-    </div>
-  );
-};
-
 // PRIVACY POLICY PAGE (Standalone for SMS compliance)
 const PrivacyPolicyPage = () => {
   return (
@@ -1803,16 +1530,12 @@ const App = () => {
           .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .services-grid-5 .service-card-photo { width: calc(50% - 12px) !important; max-width: none !important; }
           .team-grid, .team-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
-          .team-grid-2 { flex-wrap: wrap !important; }
-          .team-grid-2 > div { width: calc(50% - 12px) !important; min-width: 200px !important; }
           .testimonials-grid { grid-template-columns: 1fr !important; }
           .insurance-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .rights-grid { grid-template-columns: 1fr !important; }
           .contents-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .resource-cards-grid { grid-template-columns: 1fr !important; max-width: 500px !important; }
-          .frameworks-grid { grid-template-columns: 1fr !important; }
         }
-
+        
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-toggle { display: flex !important; }
@@ -1821,8 +1544,6 @@ const App = () => {
           .services-grid-5 { flex-direction: column !important; align-items: center !important; }
           .services-grid-5 .service-card-photo { width: 100% !important; max-width: 100% !important; min-width: auto !important; }
           .team-grid, .team-grid-3 { grid-template-columns: 1fr !important; }
-          .team-grid-2 { flex-direction: column !important; align-items: center !important; }
-          .team-grid-2 > div { width: 100% !important; max-width: 300px !important; }
           .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .location-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -1922,7 +1643,6 @@ const App = () => {
           <Route path="/contact-us" element={<ContactPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/resources/growing-up-in-grace" element={<GrowingUpInGracePage />} />
-          <Route path="/resources/thriving-the-holidays" element={<ThrivingTheHolidaysPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         </Routes>
       </main>
@@ -2485,17 +2205,10 @@ const styles = {
   // Team Page
   teamGridPage: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateColumns: 'repeat(4, 1fr)',
     gap: '24px',
-    maxWidth: '900px',
+    maxWidth: '1000px',
     margin: '0 auto'
-  },
-  teamGridPageRow2: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '24px',
-    maxWidth: '900px',
-    margin: '24px auto 0'
   },
   teamCardPage: {
     textAlign: 'center',
